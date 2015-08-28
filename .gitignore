@@ -1,0 +1,14 @@
+tesi.log
+*.pdf
+tesi.out
+node_modules
+tesi.aux
+tesi.toc
+npm-debug.log
+tesi.bcf
+*.bcf
+*.lof
+tesi.bbl
+tesi.blg
+tesi.run.xml
+tesi-blx.bib
