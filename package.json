@@ -1,7 +1,7 @@
 {
-  "name": "tesi_magistrale",
+  "name": "thesis",
   "version": "1.0.0",
-  "description": "tesi",
+  "description": "thesis",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "latex": "gulp"
