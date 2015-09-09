@@ -1,4 +1,35 @@
 \section{Single Page Application: How it works}
 \label{sec:ARC_function}
 
-In this section...
+An approach to implementing the single page pattern on today's web that makes it easy to get it right. It's based on three principles.
+\begin{itemize}
+\item Every view must have a real URL. On a normal web page, at any time I can grab what's in my browser's URL bar and either share it or bookmark it.
+\item Every link must be a real link. On a normal web page, I can view a link's destination by hovering it with my mouse; right-clicking produces a menu of link-specific options. So many otherwise-good pages try to implement their own link-like behavior by catching clicks on specific DOM nodes but then screw up corner case behaviors like middle-click.
+\item It's ok to be less awesome on old browsers. (Of course, whether this is actually true depends on your site's goals.) One tactic for old browsers is just to fail gracefully: if the site still works but is just slower, that's ok. For example, Gmail used to implement each of its buttons with a soup of DOM nodes to get the gradients and rounded corners to show on IE6; on today's web, maybe it's ok to just use some newer CSS for those effects and allow the buttons to be square and flat on IE6.
+\end{itemize}
+
+Because of principle 1,the  app must be capable of rendering any given view from scratch, because the URL load might be a freshly started browser that just loaded a bookmark. Because of principle 2, links must be implemented as plain old <a> tags with an href that points at the URL of the resulting view.
+
+And here, finally, you can sprinkle in the single-page magic. What you want to do is short-circuit some of those link clicks such that the page updates. You can do this in one central place by just intercepting clicks on <a> tags right before the browser is about to use them to navigate, and then use the history.pushState API to make the URL update appropriately. \cite{arc_tech}
+
+\subsection{Local Routing}
+
+In questa sezione viene presentato il funzionamento e l'importanza del router locale per la gestione della richiesta delle pagine da parte dell'utente. 
+Quando viene utilizzato il pattern standard la richiesta di una nuova pagina viene effettuata tramite GET: il browser stesso invia la richiesta della pagina al server, il quale, risponde inviando la pagina o effettuando l'azione desiderata.
+Con il pattern SPA, il workflow è diverso, in quanto, tramite l'utilizzo di un router lato client si previene il comportamento di default del browser descritto in precedenza.
+L'implementazione di tale pattern prevede i seguenti passi: la registrazione in ascolto al cambiamento del path; ad ogni evento di questo tipo, la richiesta è gestita tramite un mapping path/handler, nel quale viene associato ad ogni path una funzione. In genere queste funzioni hanno il compito di caricare il template e il contenuto necessario per riempire quest'ultimo.
+
+\subsection{Server architecture}
+
+\textbf{Thin server architecture}
+A SPA moves logic from the server to the client. This results in the role of the web server evolving into a pure data API or web service. This architectural shift has, in some circles, been coined ``Thin Server Architecture'' to highlight that complexity has been moved from the server to the client, with the argument that this ultimately reduces overall complexity of the system.
+
+\textbf{Thick stateful server architecture}
+The server keeps the necessary state in memory of the client state of the page. In this way, when any request hits the server (usually user actions), the server sends the appropriate HTML and/or JavaScript with the concrete changes to bring the client to the new desired state (usually adding/deleting/updating a part of the client DOM). At the same time, the state in server is updated. Most of the logic is executed on the server, and HTML is usually also rendered on the server. In some ways, the server simulates a web browser, receiving events and performing delta changes in server state which are automatically propagated to client.
+
+This approach needs more server memory and server processing, but the advantage is a simplified development model because a) the application is usually fully coded in the server, and b) data and UI state in the server are shared in the same memory space with no need for custom client/server communication bridges.
+
+\textbf{Thick stateless server architecture}
+This is a variant of the stateful server approach. The client page sends data representing its current state to the server, usually through AJAX requests. Using this data, the server is able to reconstruct the client state of the part of the page which needs to be modified and can generate the necessary data or code (for instance, as JSON or JavaScript), which is returned to the client to bring it to a new state, usually modifying the page DOM tree according to the client action which motivated the request.
+
+This approach requires that more data be sent to the server and may require more computational resources per request to partially or fully reconstruct the client page state in the server. At the same time, this approach is more easily scalable because there is no per-client page data kept in the server and, therefore, AJAX requests can be dispatched to different server nodes with no need for session data sharing or server affinity. \cite{arc_over}
