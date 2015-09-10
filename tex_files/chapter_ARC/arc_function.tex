@@ -22,14 +22,17 @@ L'implementazione di tale pattern prevede i seguenti passi: la registrazione in 
 \subsection{Server architecture}
 
 \textbf{Thin server architecture}
+
 A SPA moves logic from the server to the client. This results in the role of the web server evolving into a pure data API or web service. This architectural shift has, in some circles, been coined ``Thin Server Architecture'' to highlight that complexity has been moved from the server to the client, with the argument that this ultimately reduces overall complexity of the system.
 
 \textbf{Thick stateful server architecture}
+
 The server keeps the necessary state in memory of the client state of the page. In this way, when any request hits the server (usually user actions), the server sends the appropriate HTML and/or JavaScript with the concrete changes to bring the client to the new desired state (usually adding/deleting/updating a part of the client DOM). At the same time, the state in server is updated. Most of the logic is executed on the server, and HTML is usually also rendered on the server. In some ways, the server simulates a web browser, receiving events and performing delta changes in server state which are automatically propagated to client.
 
 This approach needs more server memory and server processing, but the advantage is a simplified development model because a) the application is usually fully coded in the server, and b) data and UI state in the server are shared in the same memory space with no need for custom client/server communication bridges.
 
 \textbf{Thick stateless server architecture}
+
 This is a variant of the stateful server approach. The client page sends data representing its current state to the server, usually through AJAX requests. Using this data, the server is able to reconstruct the client state of the part of the page which needs to be modified and can generate the necessary data or code (for instance, as JSON or JavaScript), which is returned to the client to bring it to a new state, usually modifying the page DOM tree according to the client action which motivated the request.
 
 This approach requires that more data be sent to the server and may require more computational resources per request to partially or fully reconstruct the client page state in the server. At the same time, this approach is more easily scalable because there is no per-client page data kept in the server and, therefore, AJAX requests can be dispatched to different server nodes with no need for session data sharing or server affinity. \cite{arc_over}

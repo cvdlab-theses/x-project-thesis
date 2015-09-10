@@ -43,15 +43,61 @@ The model JSON file defines models, relations between models, and access to mode
   "strict": true,
   "options": { ... }, // See Options below
   "properties": { ... }, // See Properties below
-  "hidden": [...], // See Hidden properties below
   "validations": [...],  // See Validations below
   "relations": {...},  // See Relations below
   "acls": [...],  // See ACLs below
   "scopes": {...},  // See Scopes below
-  "indexes" : { ...}, // See Indexes below
-  "methods": [...],  // See Methods below 
   "http": {"path": "/foo/mypath"}
 }
 \end{lstlisting}
 
-The API can be extended: the developer can add remote functions to mod- els or add hooks to existing API to add custom behavior before and/or after the API handler (to pre-process the re- quest and/or post-process the response). The resulting API is RESTful, cookie free, signed by authentication token. By default, applications have a built-in model that represents a user, with properties username, email and password and role for authentication and authorization. Loopback also introduces an indirection layer that allows to choose from almost all particular DBMS to be used.
+\subsection{Top-level Properties}
+
+\textbf{Name}
+
+Name of the model.
+
+\textbf{Description}
+
+Optional description of the model.
+
+\textbf{Base}
+
+Name of another model that this model extends. The model will ``inheri'' properties and methods of the base model.
+
+\textbf{IdInjection}
+
+Whether to automatically add an id property to the model:
+\begin{itemize}
+\item true id property is added to the model automatically. This is the default.
+\item false id property is not added to the model.
+\end{itemize}
+
+\textbf{Strict}
+
+Specifies whether the model accepts only predefined properties or not. One of:
+\begin{itemize}
+\item true Only properties defined in the model are accepted. Use if you want to ensure the model accepts only predefined properties.
+\item false The model is an open model and accepts all properties, including ones not predefined in the model. This mode is useful to store free-form JSON data to a schema-less database such as MongoDB.
+\item validate The unknown properties will be reported as validation errors.
+\item throw Throws an exception if properties not defined for the model are used in an operation.
+\item Undefined Defaults to false unless the data source is backed by a relational database such as Oracle or MySQL.
+\end{itemize}
+
+\textbf{Options}
+
+JSON object that specifies model options.
+
+\textbf{Properties}
+
+JSON object that specifies the properties in the model.
+
+\textbf{Relations}
+
+Object containing relation names and relation definitions.
+
+\textbf{Acls}
+
+Set of ACL specifications that describes access control for the model.
+
+The API can be extended: the developer can add remote functions to mod- els or add hooks to existing API to add custom behavior before and/or after the API handler (to pre-process the re-quest and/or post-process the response). The resulting API is RESTful, cookie free, signed by authentication token. By default, applications have a built-in model that represents a user, with properties username, email and password and role for authentication and authorization. Loopback also introduces an indirection layer that allows to choose from almost all particular DBMS to be used.
