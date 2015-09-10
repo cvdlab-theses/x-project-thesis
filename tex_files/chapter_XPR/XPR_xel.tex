@@ -1,3 +1,65 @@
 \section{X-Elements}
 \label{sec:XPR_xel}
 
+``Everything is an elemen'', from an AJAX request to an entire web page. Every part of the website is encapsulated inside an element.
+
+X-project provides a set of Polymer elements for local routing, API requests, forms, lists, style and admin pages, as listed below.
+
+Elements can be customized through their attributes. Attributes can act as inputs parameters (values having effects on the element) or output parameters (values that are returned by the element). Values in parameters could be hard-coded (if they never change) or stored in variables.
+
+Different parameters in different elements could use the same variable, so, the value of an output parameter of an element could be used as input in an input parameter of another element.
+
+\subsection{Elements for local routing}
+
+The following elements perform local routing (for Single Page Application).
+\begin{itemize}
+\item \texttt{<x-router>} Implements local routing using HTML5 Push State API. It represents the core element of the app. It intercepts routes, creates pages, and passes parameters to the page.
+\item \texttt{<x-route>} Represents a route-to-page mapping. Parameters presented in an URL are sent as attributes to the corresponding page.
+\begin{lstlisting}[language=html]
+<x-route route= "{route}" page= "{page}" />
+\end{lstlisting}
+\item \texttt{<x-link>} Is an extension of the anchor element <a> that prevents the default behavior when a click event occurs, blocking page request to the server and redirecting the request to the local router.
+\begin{lstlisting}[language=html]
+<a is="x-link"href={href}">{link}/>
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Elements for forms}
+
+The following elements are used to create forms.
+\begin{itemize}
+\item \texttt{<x-input>} Is an extension of the input element.
+\begin{lstlisting}[language=html]
+<x-input type= "{type}" label= "{label}" value= "{value}" />
+\end{lstlisting}
+Where: type can be string, number, date, email, url, location (with auto-completion based on Google Place API) and file.
+\item \texttt{<x-form>} Dynamically generates a form from a model schema, to create/update a model.
+\begin{lstlisting}[language=html]
+<x-form schema= "{schema}" model= "{model}" />
+\end{lstlisting}
+\end{itemize}
+
+\subsection{Elements for lists}
+
+The following elements are used to manage lists.
+\begin{itemize}
+\item \texttt{<x-table>} Dynamically generates a table of models from a model schema.
+\begin{lstlisting}[language=html]
+<x-table schema= "{schema}" items= "{items}" />
+\end{lstlisting}
+Where schema is used to generate the columns of the table; items is used to generate the rows (the values) of the table.
+\item \texttt{<x-pager>} Generates the list of links to handle pagination.
+\begin{lstlisting}[language=html]
+<x-pager perpage= "{perpage}" count= "{count}"current= "{page}" />
+\end{lstlisting}
+Where count is the total number of items to paginate; perpage is the number of items per page; current is the current page selected by the user.
+By itself pagination doesn’t paginate any list, but it can be used in conjunction with <api-collection-get> (as shown in the case study), where the current output parameter of <x-pager> is the input page parameter of  <api-collection-get>.
+\end{itemize}
+
+\subsection{Elements for style}
+
+The style is based on iron-flex-layout, a CSS library of style mixins for cross-platform Flexible Box layouts.
+
+\subsection{Elements for admin pages}
+
+Even a page can be encapsulated in an element. x-project provides a set of pages for the admin part of the app, <page-collection> and <page-model-edit>, presented below.
