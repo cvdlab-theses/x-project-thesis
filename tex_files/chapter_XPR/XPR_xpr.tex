@@ -2,3 +2,19 @@
 \label{sec:XPR_xpr}
 
 X-Project is a platform to build full-stack Javascript NodeJS API-centric HTML5 based Single Page Application with Web Components via Polymer-Project.
+
+``Everything is an element'' is the philosophy of the project.
+
+A Web Application is essentially built by composing elements together.
+
+Scopo del progetto é poter costruire una web application componendo elementi (possibilmente) già esistenti.
+Tale assunzione deriva dal fatto che le web application condividono componenti comuni, indispensabili per una applicazione web, ma non specifici: ad esempio, la gestione dell'utente, ovvero i meccanismi di login/signup/logout, e quindi le widget lato client, come il modal/form per la registrazione/accesso, e le relative API lato server; oppure, la gestione dei media, ovvero i meccanismi di salvataggio di file multimediali (testo, immagini, video) su storage remoto, e quindi le widget per il caricamento dei file lato client, e la gestione delle relative api.
+
+Quindi, scopo del progetto, è poter aggiungere tale logica nella propria applicazione con la semplicità con la quale si aggiunge un elemento HTML in una pagina.
+
+Infact, in x-project, an element is a part of the application that comprises both the client side and the server side.
+
+Quindi, ad esempio, aggiungere la widget per il login, inserendo l'elemento HTML corrispondente nella pagina, comporterà di conseguenza aggiungere oltre al componente nell'intefaccia utente, tutta la logica per la sua gestione lato server.
+
+ 
+
