@@ -71,8 +71,7 @@ Tha admin part is composed by page-collection and page-model-edit. These pages a
 
 Where: the parameter :collection is the name of the collection to inspect; the parameter :id is the id of the model to edit. These parameters are set as attributes of the page element.
 
-\begin{itemize} \texttt{<page-collection>} Shows the models of a collection.
-
+\begin{itemize} \item \texttt{<page-collection>} Shows the models of a collection.
 \begin{lstlisting}[language=html]
 <template name= "page-collection">
 	<api-collection-schema name="{{collection}}" 
@@ -87,13 +86,12 @@ Where: the parameter :collection is the name of the collection to inspect; the p
 	current="{{page}}"/>
 </template>
 \end{lstlisting}
+\end{itemize}
 
 Where: the value collection is picked from the url, via the parameter :collection; the value schema is the output of \texttt{<api-collection-schema>} and the input of \texttt{<api-collection-get>} and \texttt{<x-table>}; the value items is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-table>}; the value where is the output of \texttt{<api-collection-where>} and the input of \texttt{<api-collection-get>}; the value count is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-pager>}; the values perpage and page are the outputs of \texttt{<x-pager>} and the inputs of \texttt{<api-collection-get>}; every time the user (the admin) interacts with the pagination (\texttt{<x-pager>}) or the advanced search options (\texttt{<api-collection-where>}), \texttt{<api-collection-get>} regenerates the request to get the list of models using pagination and query parameters.
 
-\end{itemize}
 
-\begin{itemize} \texttt{<page-model-edit>} Shows the forms to update a model.
-
+\begin{itemize} \item \texttt{<page-model-edit>} Shows the forms to update a model.
 \begin{lstlisting}[language=html]
 <template name="page-model-edit">
 	<api-collection-schema name="{collection}"
@@ -105,10 +103,10 @@ Where: the value collection is picked from the url, via the parameter :collectio
 	model-id="{id}" model="{model}"/>
 </template>
 \end{lstlisting}
+\end{itemize}
 
 Where: the value schema is the output of \texttt{<api-collection-schema>} and the input of \texttt{<x-form>}; the value model is the output of \texttt{<api-model-get>} and \texttt{<x-form>} and the input of \texttt{<api-model-put>}. Once the page is ready (initialized and served by the local router): \texttt{<api-collection-schema>} fetch the schema; \texttt{<api-model-get>} fetch the model (a post or a tag) identified by id; \texttt{<x-form>} shows the form to edit the model. When the model changes (is updated via the form) \texttt{<api-model-put>} sends a request to the server to update the database (via the corresponding HTTP RESTful API).
 
-\end{itemize}
 
 The user part is essentially composed by two pages: page-posts and page-post.
 
@@ -119,8 +117,7 @@ The user part is essentially composed by two pages: page-posts and page-post.
 </x-router>
 \end{lstlisting}
 
-\begin{itemize} \texttt{<page-posts>} Shows the list of posts.
-
+\begin{itemize} \item \texttt{<page-posts>} Shows the list of posts.
 \begin{lstlisting}[language=html]
 <template name= " page-posts ">
 	<api-collection-get name="Posts"
@@ -133,11 +130,11 @@ The user part is essentially composed by two pages: page-posts and page-post.
 		current="{page}"/>
 </template>
 \end{lstlisting}
+\end{itemize}
 
 Where: the value posts is the output of \texttt{<api-collection-get>} and the input of the \texttt{<template>} iterator; for each item in posts, a list item with the post info (title and publish-ing date) is printed; \texttt{<x-pager>} component is the same used in the page \texttt{<page-collection>}.
 
-\begin{itemize} \texttt{<page-post>} Shows a post.
-
+\begin{itemize} \item \texttt{<page-post>} Shows a post.
 \begin{lstlisting}[language=html]
 <template name="page-post">
 	<api-model-get name="Posts" model-id="{id}"
@@ -148,6 +145,7 @@ Where: the value posts is the output of \texttt{<api-collection-get>} and the in
 	<div>{post.content}</div>
 </template>
 \end{lstlisting}
+\end{itemize}
 
 Once \texttt{<api-model-get>} has fetched the post (identified by id), title, author, date and content of the post will be shown. It has been shown how to use \texttt{x-project} toolkit to build a simple blog application. It can be extended, adding new features, by following the 4-steps document-driven process: defining new models, generating corresponding API, defininig new UI components, assembling the UI. The growth of the complexity of the application does not affect the complexity of the development. x-project source code is published on GitHub at http://github.com/x-project.
 
