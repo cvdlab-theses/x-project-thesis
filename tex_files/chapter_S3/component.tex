@@ -7,7 +7,7 @@ Operations that can be done, like upload, delete or get media, is ruled by CORS 
 These operations are direct: none of them is done via server. Server is only used to get the authorization to communicate with the S3 cloud storage service.
 In fact, client makes an AJAX request to server in order to get the Signed URL, that is the request URL combined with the name of S3 Bucket and the dedicated Region. 
 Once the client receive the Signed URL can pass the operation to S3 Service and carry it out.
-Bucket and Region names are stored in \texttt{.env} file and must be set up on S3 website.
+Bucket and Region names are stored in \texttt{.env} file and must be set up before on S3 website.
 
 \begin {figure}[h]
 \graphicspath{{images/chapter_s3/}}
@@ -20,28 +20,89 @@ Bucket and Region names are stored in \texttt{.env} file and must be set up on S
 \subsection{S3 Component X-Elements}
 \label{subsec:S3_server_elem}
 
-In order to use Media Management S3 Component in an X-Project App there's need to combinate five different X-Elements, for the server-side: \texttt{api-s3-upload}, \textt{api-s3-list}, \textt{api-s3-delete}, \textt{part-s3-list} and \textt{part-s3-upload}.
+In order to use Media Management S3 Component in an X-Project App there's need to combinate six different X-Elements, for the server-side: \texttt{api-s3-upload}, \texttt{api-s3-list}, \texttt{api-s3-delete}, \texttt{part-s3-list}, \texttt{part-s3-list-item} and \texttt{part-s3-upload}.
 Each element provides the opportunity to use one of the basic function of Amazon S3 service. 
 
-\subsubsection{\textt{api-s3-upload}}
+\subsubsection{\texttt{api-s3-upload}}
 \label{api-s3-upload}
-The element named \textt{api-s3-upload} needs to upload new files 
 
-\subsubsection{\textt{api-s3-list}}
+The element named \texttt{api-s3-upload} has been designed to upload new files to the S3 Bucket.
+\begin{lstlisting}[language=javascript]
+<api-s3-upload id="upload" folder="{{folder}}"
+	file="{{file}}" file-name="{{fileName}}">
+</api-s3-upload>
+\end{lstlisting}
+
+
+\subsubsection{\texttt{api-s3-list}}
 \label{api-s3-list}
-The element named \textt{api-s3-list} makes...
+The element named \texttt{api-s3-list} has been designed to get the list of elements currently in the S3 Bucket.
+\begin{lstlisting}[language=javascript]
+<api-s3-list id="list" list="{{list}}" folder="{{folder}}">
+</api-s3-list>
+\end{lstlisting}
 
-\subsubsection{\textt{api-s3-delete}}
+
+\subsubsection{\texttt{api-s3-delete}}
 \label{api-s3-delete}
-The element named \textt{api-s3-delete} makes...
+The element named \texttt{api-s3-delete} has been designed to delete an element currently in the S3 Bucket.
+\begin{lstlisting}[language=javascript]
+<api-s3-delete id="request" file-name="{{item.key}}">
+</api-s3-delete>
+\end{lstlisting}
 
-\subsubsection{\textt{part-s3-list}}
+
+\subsubsection{\texttt{part-s3-list}}
 \label{part-s3-list}
-The element named \textt{part-s3-list} makes...
+The element named \texttt{part-s3-list} has been developed to show the list of elements currently in the S3 Bucket
+\begin{lstlisting}[language=javascript]
+<api-s3-list id="list" list="{{list}}" folder="{{folder}}"></api-s3-list>
+...
+<part-s3-list-item item="{{item}}" on-delete="update"></part-s3-list-item>
+...
+update: function () {
+      this.$.list.send();
+    }
+...
+\end{lstlisting}
 
-\subsubsection{\textt{part-s3-upload}}
+
+
+\subsubsection{\texttt{part-s3-list-item}}
+\label{part-s3-list-item}
+The element named \texttt{part-s3-list-item} has been developed to show a preview of a selected files and to let the user delete it.
+\begin{lstlisting}[language=javascript]
+
+ <api-s3-delete id="request" file-name="{{item.key}}"></api-s3-delete>
+ ...
+ <button id="delete" on-click="delete_image">delete</button>
+ ...
+ delete_image: function () {
+      this.$.request.send();
+ }
+ ...
+\end{lstlisting}
+
+
+\subsubsection{\texttt{part-s3-upload}}
 \label{part-s3-upload}
-The element named \textt{part-s3-upload} makes...
+The element named \texttt{part-s3-upload} has been developed to allow to users to upload new files to the S3 Bucket.
 
+\begin{lstlisting}[language=javascript]
+<api-s3-upload id="upload" folder="{{folder}}"
+      file="{{file}}" file-name="{{fileName}}">
+</api-s3-upload>
+
+<input id="input" type="file" on-change="on_change">
+on_change: function () {
+      var file = this.$.input.files[0];
+      if (!file) {
+        return;
+      }
+      this.fileName = this.fileName || file.name;
+      this.file = file;
+    }
+
+\end{lstlisting}
 
 
