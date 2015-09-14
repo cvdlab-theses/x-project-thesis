@@ -20,11 +20,13 @@ Bucket and Region names are stored in \texttt{.env} file and must be set up befo
 \subsection{S3 Component X-Elements}
 \label{subsec:S3_server_elem}
 
+
 In order to use Media Management S3 Component in an X-Project App there's need to combinate six different X-Elements, for the server-side: \texttt{api-s3-upload}, \texttt{api-s3-list}, \texttt{api-s3-delete}, \texttt{part-s3-list}, \texttt{part-s3-list-item} and \texttt{part-s3-upload}.
 Each element provides the opportunity to use one of the basic function of Amazon S3 service. 
 
 \subsubsection{\texttt{api-s3-upload}}
 \label{api-s3-upload}
+
 
 The element named \texttt{api-s3-upload} has been designed to upload new files to the S3 Bucket.
 \begin{lstlisting}[language=javascript]
