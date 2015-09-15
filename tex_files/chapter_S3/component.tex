@@ -57,17 +57,19 @@ The element named \texttt{api-s3-delete} has been designed to delete an element 
 \subsubsection{\texttt{part-s3-list}}
 \label{part-s3-list}
 The element named \texttt{part-s3-list} has been developed to show the list of elements currently in the S3 Bucket
-\begin{lstlisting}[language=javascript]
-<api-s3-list id="list" list="{{list}}" folder="{{folder}}"></api-s3-list>
-...
-<part-s3-list-item item="{{item}}" on-delete="update"></part-s3-list-item>
-...
-update: function () {
-      this.$.list.send();
-    }
-...
-\end{lstlisting}
+\begin{lstlisting}[language=html]
+<template>
+    <api-s3-list id="list" list="{{list}}" folder="{{folder}}">
+    </api-s3-list<
 
+    <template is="dom-repeat" items="{{list}}" filter="filter">
+        <part-s3-list-item item="{{item}}" on-delete="update">
+        </part-s3-list-item>
+    </template>
+</template>
+\end{lstlisting}
+The first tag, \texttt{<api-s3-list>}, calls the GET API that handles the request to S3, and returns the list of elements currently in S3 Bucket.
+The second tag, \texttt{<part-s3-list-item>}, creates an visual element for each object currently in the bucket. This cycle is expressed via the attribute \texttt{``dom-repeat''}
 
 
 \subsubsection{\texttt{part-s3-list-item}}
