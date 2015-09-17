@@ -5,9 +5,11 @@ In this section will be analyzed the Media Management S3 Component, developed to
 This specific component has been developed in order to store and manage media files in Amazon S3 service.
 Operations that can be done, like upload, delete or get media, is ruled by CORS (\ref{subsec:S3_cors}) pattern.
 These operations are direct: none of them is done via server. Server is only used to get the authorization to communicate with the S3 cloud storage service.
-In fact, client makes an AJAX request to server in order to get the Signed URL, that is the request URL combined with the name of S3 Bucket and the dedicated Region. 
+In fact, client makes an AJAX request to server in order to get the Signed URL, that is the request URL combined with the name of S3 Bucket and the dedicated Region.
+The Signed URL pattern represents the Digital Signature security mechanism, as seen in \ref{sec:digsign}.
 Once the client receive the Signed URL can pass the operation to S3 Service and carry it out.
 Bucket and Region names are stored in \texttt{.env} file and must be set up before on S3 website.
+Moreover, users must set Bucket's CORS Configuration on S3 Admin Panel (as shown in fig. \ref{s3panel}): CRUD operations must be allowed from the user in the CORS Configuration Editor panel.
 
 \begin {figure}[h]
 \graphicspath{{images/chapter_s3/}}
@@ -16,12 +18,29 @@ Bucket and Region names are stored in \texttt{.env} file and must be set up befo
 \end {figure}
 
 
+\begin {figure}[h]
+\graphicspath{{images/chapter_s3/}}
+\includegraphics[width=\textwidth]{s3panel}
+\caption{S3 CORS Configuration Editor Panel}
+\end {figure}
 
-\subsection{S3 Component X-Elements}
+
+\subsection{S3 Component Elements}
 \label{subsec:S3_server_elem}
 
 
-In order to use Media Management S3 Component in an X-Project App there's need to combinate six different X-Elements, for the server-side: \texttt{api-s3-upload}, \texttt{api-s3-list}, \texttt{api-s3-delete}, \texttt{part-s3-list}, \texttt{part-s3-list-item} and \texttt{part-s3-upload}.
+In order to use Media Management S3 Component in an X-Project App there's need to combinate six different X-Elements:
+\begin{itemize}
+
+\item\texttt{api-s3-upload},
+\item\texttt{api-s3-list},
+\item\texttt{api-s3-delete},
+\item\texttt{part-s3-list},
+\item\texttt{part-s3-list-item}
+\item\texttt{part-s3-upload}.
+
+\end{itemize}
+
 Each element provides the opportunity to use one of the basic function of Amazon S3 service. 
 
 \subsubsection{\texttt{api-s3-upload}}
@@ -69,7 +88,7 @@ The element named \texttt{part-s3-list} has been developed to show the list of e
 </template>
 \end{lstlisting}
 The first tag, \texttt{<api-s3-list>}, calls the GET API that handles the request to S3, and returns the list of elements currently in S3 Bucket.
-The second tag, \texttt{<part-s3-list-item>}, creates an visual element for each object currently in the bucket. This cycle is expressed via the attribute \texttt{``dom-repeat''}
+The second tag, \texttt{<part-s3-list-item>}, creates a visual element for each object currently in the bucket. This cycle is expressed via the attribute \texttt{``dom-repeat''}.
 
 
 \subsubsection{\texttt{part-s3-list-item}}
@@ -86,6 +105,9 @@ The element named \texttt{part-s3-list-item} has been developed to show a previe
  }
  ...
 \end{lstlisting}
+
+The first tag, \texttt{<api-s3-delete>}, set the DELETE API that handles the request to S3.
+The button tag creates a button that, when clicked, trigger the \texttt{delete image} function, that makes the call via \texttt{<api-s3-delete>} element.
 
 
 \subsubsection{\texttt{part-s3-upload}}
@@ -109,4 +131,10 @@ on_change: function () {
 
 \end{lstlisting}
 
+The first tag, \texttt{<api-s3-upload>}, set the UPLOAD API that handles the request to S3.
+The input tag creates a input form that let the user choice the file to upload and trigger the \texttt{on change} function, that send the file via \texttt{<api-s3-upload>} element.
 
+
+
+\section{S3 Component - Example}
+\label{sec:S3_exmpl}
