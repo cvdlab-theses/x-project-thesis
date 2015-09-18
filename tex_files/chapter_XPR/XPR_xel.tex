@@ -12,31 +12,30 @@ Different parameters in different elements could use the same variable, so, the 
 \subsection{Elements for local routing}
 
 The following elements perform local routing (for Single Page Application).
-\begin{itemize}
-\item \texttt{<x-router>} Implements local routing using HTML5 Push State API. It represents the core element of the app. It intercepts routes, creates pages, and passes parameters to the page.
-\item \texttt{<x-route>} Represents a route-to-page mapping. Parameters presented in an URL are sent as attributes to the corresponding page.
+\paragraph{\texttt{<x-router>}} Implements local routing using HTML5 Push State API. It represents the core element of the app. It intercepts routes, creates pages, and passes parameters to the page.
+\paragraph{\texttt{<x-route>}} Represents a route-to-page mapping. Parameters presented in an URL are sent as attributes to the corresponding page.
 \begin{lstlisting}[language=html]
 <x-route route="{{route}}" page="{{page}}"/>
 \end{lstlisting}
-\item \texttt{<x-link>} Is an extension of the anchor element <a> that prevents the default behavior when a click event occurs, blocking page request to the server and redirecting the request to the local router.
+\paragraph{\texttt{<x-link>}} Is an extension of the anchor element <a> that prevents the default behavior when a click event occurs, blocking page request to the server and redirecting the request to the local router.
 \begin{lstlisting}[language=html]
 <a is="x-link" href="{{href}}">{{link}}/>
 \end{lstlisting}
-\end{itemize}
 
 \subsection{Elements for API}\cite{xpr_api}
 
 The following elements are used to create API.
 
-\begin{itemize}
-\item \texttt{api-model-create} Create new instance of Model, and save to database.
+\paragraph{\texttt{<api-model-create>}}
+
+Create new instance of Model, and save to database.
 
 \begin{lstlisting}[language=html]
 <api-model-create model="{{model}}" data="{{data}}" 
 collection="{{collection}}" response="{{response}}" 
 error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{model} name of model.(String)
 \item \texttt{data} user data.(Object)
@@ -45,14 +44,16 @@ error="{{error}}"/>
 \item \texttt{error} object of the error response(Object).
 \end{itemize}
 
-\item \texttt{api-model-get} Get the id property name of the constructor.
+\paragraph{\texttt{<api-model-get>}}
+
+Get the id property name of the constructor.
 
 \begin{lstlisting}[language=html]
-<api-model-get model-id="{{model-id}}" 
+<api-model-get model_id="{{model_id}}" 
 collection="{{collection}}" 
 response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{model-id} id of model(String).
 \item \texttt{collection} name of collection(Object).
@@ -60,104 +61,115 @@ response="{{response}}" error="{{error}}"/>
 \item \texttt{error} object of the error response(Object).
 \end{itemize}
 
-\item \texttt{api-model-update} Update multiple instances that match the where clause.
+\paragraph{\texttt{<api-model-update>}}
+
+Update multiple instances that match the where clause.
 
 \begin{lstlisting}[language=html]
-<api-model-update model-id="{{model-id}} 
+<api-model-update model_id="{{model_id}} 
 "collection="{{collection}}" 
 response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{model-id} id of model(String).
 \end{itemize}
 
-\item \texttt{api-model-find} Find all model instances that match filter specification.
+\paragraph{\texttt{<api-model-find>}}
+
+Find all model instances that match filter specification.
 
 \begin{lstlisting}[language=html]
 <api-model-find where="{{where}} "collection="{{collection}}" 
 response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{where} where clause(Object).
 \end{itemize}
 
-\item \texttt{api-model-delete} Deletes the model from persistence.
+\paragraph{\texttt{<api-model-delete>}}
+
+Deletes the model from persistence.
 
 \begin{lstlisting}[language=html]
-<api-model-delete model-id="{{model-id}}" 
+<api-model-delete model_id="{{model_id}}" 
 collection="{{collection}}" 
 response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{model-id} id of model(String).
 \end{itemize}
 
-\item \texttt{api-model-exists} Check whether a model instance exists in database.
+\paragraph{\texttt{<api-model-exists>}}
+
+Check whether a model instance exists in database.
 
 \begin{lstlisting}[language=html]
-<api-model-exists model-id="{{model-id}} exists="{{boolean}}" 
+<api-model-exists model_id="{{model_id}}" exists="{{boolean}}" 
 collection="{{collection}}" response="{{response}}" 
-"error="{{error}}"/>
+error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{model-id} id of model(String).
 \item \texttt{exists} True if the instance with the specified ID exists; false otherwise(Output).
 \end{itemize}
 
-\item \texttt{api-model-count} Check whether a model instance exists in database.
+\paragraph{\texttt{<api-model-count>}}
+
+Check whether a model instance exists in database.
 
 \begin{lstlisting}[language=html]
 <api-model-count count="{{count}}" collection="{{collection}}" 
 response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
-
+Where:
 \begin{itemize}
 \item \texttt{count} number of instances updated(Output).
-\end{itemize}
-
 \end{itemize}
 
 \subsection{Elements for forms}
 
 The following elements are used to create forms.
-\begin{itemize}
-\item \texttt{<x-input>} Is an extension of the input element.
+
+\paragraph{\texttt{<x-input>}} 
+
+Is an extension of the input element.
 \begin{lstlisting}[language=html]
 <x-input type="{{type}}" label="{{label}}" value="{{value}}"/>
 \end{lstlisting}
+Where:
 \begin{itemize}
 \item \texttt{type} can be string, number, date, email, url, location (with auto-completion based on Google Place API) and file.
 \end{itemize}
 
-\item \texttt{<x-form>} Dynamically generates a form from a model schema, to create/update a model.
+\paragraph{\texttt{<x-form>}} Dynamically generates a form from a model schema, to create/update a model.
 \begin{lstlisting}[language=html]
 <x-form schema="{schema}" model="{model}"/>
 \end{lstlisting}
-\end{itemize}
 
 \subsection{Elements for lists}
 
 The following elements are used to manage lists.
-\begin{itemize}
 
-\item \texttt{<x-table>} Dynamically generates a table of models from a model schema.
+\paragraph{\texttt{<x-table>}} Dynamically generates a table of models from a model schema.
 \begin{lstlisting}[language=html]
 <x-table schema="{{schema}}" items="{{items}}"/>
 \end{lstlisting}
+Where:
 \begin{itemize}
 \item \texttt{schema} is used to generate the columns of the table. 
 \item \texttt{items} is used to generate the rows (the values) of the table.
 \end{itemize}
 
-\item \texttt{<x-pager>} Generates the list of links to handle pagination.
+\paragraph{\texttt{<x-pager>}} Generates the list of links to handle pagination.
 \begin{lstlisting}[language=html]
 <x-pager perpage="{{perpage}}" count="{{count}}" 
 current="{{page}}"/>
 \end{lstlisting}
+Where:
 \begin{itemize}
 \item \texttt{count} is the total number of items to paginate.
 \item \texttt{perpage} is the number of items per page.
@@ -166,7 +178,6 @@ current="{{page}}"/>
 
 By itself pagination doesn’t paginate any list, but it can be used in conjunction with <api-collection-get> (as shown in the case study), where the current output parameter of <x-pager> is the input page parameter of  <api-collection-get>.
 
-\end{itemize}
 
 \subsection{Elements for style}
 
@@ -178,19 +189,36 @@ Even a page can be encapsulated in an element. x-project provides a set of pages
 
 \subsection{Elements for pages}
 
+\paragraph{\texttt{<x-header>}} This element is used to insert an header at the top of the page.
+\begin{lstlisting}[language=html]
+<x-header links="{{links}}" brand="{{brand}}"/>
+\end{lstlisting}
+Where:
 \begin{itemize}
-\item \texttt{<x-header>}This element is used to insert an header at the top of the page.
+\item \texttt{links} is the total number of items to paginate.
+\item \texttt{brand} is the number of items per page.
+\end{itemize}
+\paragraph{\texttt{<x-footer>}} This element is used to insert an footer at the botton of the page.
 \begin{lstlisting}[language=html]
-<x-header link="{{link}}"/>
+<x-footer links="{{links}}" notes="{{notes}}"/>
 \end{lstlisting}
-\item \texttt{<x-footer>}This element is used to insert an footer at the botton of the page.
+Where:
+\begin{itemize}
+\item \texttt{links} is the total number of items to paginate.
+\item \texttt{notes} is the number of items per page.
+\end{itemize}
+\paragraph{\texttt{<x-crew>}} This element is used to insert the section for the presentation of the team of a project.
 \begin{lstlisting}[language=html]
-<x-footer></x-footer>
-\end{lstlisting}
-\item \texttt{<x-crew>}This element is used to insert the section for the presentation of the team of a project.
+<x-crew team="{{team}}"/>\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{team} is the total number of items to paginate.
+\end{itemize}
+\paragraph{\texttt{<x-contact>}}This element is used to insert the section for the presentation of the contact.
 \begin{lstlisting}[language=html]
-<x-crew>Crew of Design Framework</x-crew>\end{lstlisting}
-\item \texttt{<x-contact>}This element is used to insert the section for the presentation of the contact.
-\begin{lstlisting}[language=html]
-<x-contact></x-contact>\end{lstlisting}
+<x-contact contact="{{contact}}"/>\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{links} is the total number of items to paginate.
+\item \texttt{brand} is the number of items per page.
 \end{itemize}

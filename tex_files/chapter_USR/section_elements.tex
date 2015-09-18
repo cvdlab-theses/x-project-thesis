@@ -1,15 +1,149 @@
 \section{User Managament elements}
 
-- app-session
-- api-user-login
-- api-user-logout
-- api-user-signup
-- api-user-reset
+Per la gestione dell'utente sono stati creati degli elementi.
+Di questo elementi è stato sviluppato sia lo style che il comportamento, cosi che ogni utente può tranquillamente personalizzarlo a suo piacimento
+e scegliere di usare o un lato o entrambi i lati dell'elemento.
+I principali elementi sviluppati sono quelli per la gestione di: login, logout, signup e reset.
+Di seguento ci sono le specifiche per ogni elemento.
 
-- form-login
-- page-login
-- form-signup
-- page-signup
-- form-reset
-- page-reset
+\subsubsection{\texttt{<api-user-login>}}
+
+Login a user by with the given credentials.
+\begin{lstlisting}[language=html]
+<api-user-login credentials="{{credentials}}"
+collection="{{collection}}" 
+response="{{response}}" error="{{error}}"/>
+\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{credentials} email and password of user.
+\item \texttt{collection} name of collection(Object).
+\item \texttt{response}	HTTP response message(String).
+\item \texttt{error} object of the error response(Object).
+\end{itemize}
+
+\subsubsection{\texttt{<api-user-logout>}}
+
+Logout a user with the given accessToken id.
+\begin{lstlisting}[language=html]
+<api-user-logout collection="{{collection}}" 
+response="{{response}}" error="{{error}}"/>
+\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{credentials} email and password of user.
+\item \texttt{collection} name of collection(Object).
+\item \texttt{response}	HTTP response message(String).
+\item \texttt{error} object of the error response(Object).
+\end{itemize}
+
+\subsubsection{\texttt{<api-user-signup>}}
+
+Signup a user by with the given general information.
+\begin{lstlisting}[language=html]
+<api-user-signup credentials="{{credentials}}"
+collection="{{collection}}" 
+response="{{response}}" error="{{error}}"/>
+\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{credentials} email, password, name and phone-number of user.
+\item \texttt{collection} name of collection(Object).
+\item \texttt{response}	HTTP response message(String).
+\item \texttt{error} object of the error response(Object).
+\end{itemize}
+
+\subsubsection{\texttt{<api-user-reset>}}
+
+Create a short lived acess token for temporary login. Allows users to change passwords if forgotten.
+\begin{lstlisting}[language=html]
+<api-user-reset email="{{email}}"
+collection="{{collection}}" 
+response="{{response}}" error="{{error}}"/>
+\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{email} email of user(String).
+\item \texttt{collection} name of collection(Object).
+\item \texttt{response}	HTTP response message(String).
+\item \texttt{error} object of the error response(Object).
+\end{itemize}
+
+\subsubsection{\texttt{<form-login>}}
+
+Create a login form.
+\begin{lstlisting}[language=html]
+<form id="form" on-submit="on_submit">
+    <div class="field">
+        <label class="label">email</label>
+        <input class="input" is="iron-input" type="text" 
+    		placeholder="email" bind-value="{{credentials.email}}">
+    </div>
+    <div class="field">
+        <label class="label">password</label>
+        <input class="input" is="iron-input" type="password" 
+        	placeholder="password" 
+        	bind-value="{{credentials.password}}">
+    </div>
+      	<input type="submit" value="login"/>
+</form>
+\end{lstlisting}
+
+\subsubsection{\texttt{<form-login-behaviour>}} 
+
+Create a login behaviour.
+
+\subsubsection{\texttt{<form-signup>}}
+
+Create a signup form.
+\begin{lstlisting}[language=html]
+<form id="form" on-submit="on_submit">
+    <div class="field">
+        <label class="label">email</label>
+        <input class="input" is="iron-input" type="text" 
+    		placeholder="email" bind-value="{{credentials.email}}">
+    </div>
+    <div class="field">
+        <label class="label">password</label>
+        <input class="input" is="iron-input" type="password" 
+        	placeholder="password" 
+        	bind-value="{{credentials.password}}">
+    </div>
+    <div class="field">
+        <label class="label">firstname</label>
+        <input class="input" is="iron-input" type="text" 
+        	placeholder="firstname" 
+        	bind-value="{{credentials.firstname}}">
+    </div>
+    <div class="field">
+        <label class="label">lastname</label>
+        <input class="input" is="iron-input" type="text" 
+        	placeholder="lastname" 
+        	bind-value="{{credentials.lastname}}">
+    </div>
+    <div class="field">
+        <label class="label">phone-number</label>
+        <input class="input" is="iron-input" type="text" 
+        	placeholder="phone-number" 
+        	bind-value="{{credentials.phone-number}}">
+    </div>
+      	<input type="submit" value="confirm"/>
+</form>
+\end{lstlisting}
+
+
+\subsubsection{\texttt{<form-reset>}}
+
+Create a reset form.
+\begin{lstlisting}[language=html]
+<form id="form" on-submit="on_submit">
+    <div class="field">
+        <label class="label">email</label>
+        <input class="input" is="iron-input" type="text" 
+    		placeholder="email" bind-value="{{credentials.email}}">
+    </div>
+      	<input type="submit" value="reset"/>
+</form>
+\end{lstlisting}
+
 
