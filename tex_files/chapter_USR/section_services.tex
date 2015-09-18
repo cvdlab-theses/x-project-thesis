@@ -5,10 +5,10 @@ Le app rivolte ad una comunità di utenti/clienti devono necessariamente impleme
 
 I meccanismi di gestione utente base sono:
 \begin{itemize}
-\item login dell'utente
-\item signup dell'utente
-\item ogout dell'utente
-\item gestione del profilo utente
+\item user login 
+\item user signup
+\item user logout
+\item user management
 \end{itemize}
 
 A questi, possono essere associati meccanismi di gestione avanzati, quali:
@@ -81,10 +81,14 @@ You can connect any application, written on any language or stack to Auth0, and 
 
 \subsection{User Management API in StrongLoop LoopBack}
 
-x-project is based on StrongLoop LoopBack on the server side.
-LoopBack provides User Management.
-
-
-Per la gestione della email, LoopBack si può connettere a vari providers.
-
-Nello specifico, è stato implementata la connessione con il servizio di MailChimp chiamato Mandrill (vedi sezione...)
+X-project is based on StrongLoop LoopBack on the server side.
+LoopBack's built-in User model provides essential user management features such as:
+\begin{itemize}
+\item Registration and confirmation via email.
+\item Login and logout.
+\item Creating an access token.
+\item Password reset. 
+\end{itemize}
+In general can extend the User model to suit your specific needs, so in most cases, you don't need to create your own User model from scratch.
+By default, a LoopBack application has a built-in User model defined by user.json
+In particular, it was implemented the connection with MailChimp service, named Mandrill.
