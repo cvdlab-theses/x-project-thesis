@@ -1,11 +1,9 @@
 \section{Polymer}
 \label{sec:TCH_polymer}
 
-In this section there will be an overview about Polymer.
+In this section there will be an overview about Polymer. Polymer provides a thin layer of API on top of Web Components and several powerful features, such as custom events and delegation, mixins, accessors and component lifecycle functions, to facilitate the creation of Web Components. Polymer does this by:
 
-The specifications introduced above are quite new and it is hardly surprising to know that browser support is not very good. But, thanks to the Polymer library, created by the awesome folks at Google, we can use all these features in modern browsers today. Polymer provides a set of polyfills that enables us to use web components in non-compliant browsers with an easy-to-use framework. Polymer does this by:
-
-Allowing us to create Custom Elements with user-defined naming schemes. These custom elements can then be distributed across the network and used by others with HTML Imports.
+Allowing to create Custom Elements with user-defined naming schemes. These custom elements can then be distributed across the network and used by others with HTML Imports.
 
 Allowing each custom element to have its own template accompanied by styles and behavior required to use that element.
 
@@ -30,15 +28,12 @@ The elements collection of Polymer is divided into more sections:
 \includegraphics[width=\textwidth]{polymer_1}
 \caption{Polymer Architecture}
 \end {figure}
-
-
-HTML provides a set of built-in elements like <button>, <form> and <table>. Each element has its own API of attributes, properties, methods, and events. Each element has built-in styling, as well as style properties you can override using CSS.\cite{tch_polymer1}
-
-Anyone can use these elements to build a simple web page. But they’re limited. To build something as simple as a set of tabs, you need HTML plus CSS and usually a script, too.
+ 
 
 Web components. These standards provide the primitives you need to build new components. You can build your own custom elements using these primitives, but it can be a lot of work.
 The Polymer library. Provides a declarative syntax that makes it simpler to define custom elements. And it adds features like templating, two-way data binding and property observation to help you build powerful, reusable elements with less code.
-Custom elements. If you don’t want to write your own elements, there are a number of elements built with Polymer that you can drop straight into your existing pages. These elements depend on the Polymer library, but you can use the elements without using Polymer directly.
+Custom elements. If you don’t want to write your own elements, there are a number of elements built with Polymer that you can drop straight into your existing pages. These elements depend on the Polymer library, but you can use the elements without using Polymer directly.\cite{tch_polymer1}
+
 
 Polymer is one of the first implementations of a user interface library built upon the Web Components standard.  Web Components are not fully supported by browsers, but they provide a polyfill library, webcomponents.js, that provides enough functionality to support Web Components and Polymer.
 Web Components is the result of the evolution of user interface libraries over the past decade.  At one point, we strove to separate our HTML, CSS, and JavaScript and ran our HTML through W3C validators. This led to unintended complexities…  For example, looking at a .css file, you couldn’t easily determine which selectors are actually used in your HTML and especially programmatically used in JavaScript.  Similarly, your JavaScript code was difficult to organize so that code could be reused efficiently on multiple pages.\cite{tch_polymer2}
