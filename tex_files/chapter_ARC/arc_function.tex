@@ -14,10 +14,10 @@ And here, finally, you can sprinkle in the single-page magic. What you want to d
 
 \subsection{Local Routing}
 
-In questa sezione viene presentato il funzionamento e l'importanza del router locale per la gestione della richiesta delle pagine da parte dell'utente. 
-Quando viene utilizzato il pattern standard la richiesta di una nuova pagina viene effettuata tramite GET: il browser stesso invia la richiesta della pagina al server, il quale, risponde inviando la pagina o effettuando l'azione desiderata.
-Con il pattern SPA, il workflow è diverso, in quanto, tramite l'utilizzo di un router lato client si previene il comportamento di default del browser descritto in precedenza.
-L'implementazione di tale pattern prevede i seguenti passi: la registrazione in ascolto al cambiamento del path; ad ogni evento di questo tipo, la richiesta è gestita tramite un mapping path/handler, nel quale viene associato ad ogni path una funzione. In genere queste funzioni hanno il compito di caricare il template e il contenuto necessario per riempire quest'ultimo.
+In this section has been presented the operation and the importence of local router to the manage of page request from the user.
+When using the standard pattern requiring a new page is done using GET: the browser itself sends the page request to the server, which responds by sending the page or performing the desired action.
+With the pattern SPA, the workflow is different, since, through the use of a router client side prevents the default behavior of the browser described above.
+The implementation of this pattern involves the following steps: recording listening to change the path; at each event of this type, the request is handled by a mapping path / handler, in which each path is associated with a function. In general, these functions have the task of fetching the template and the content needed to fill the latter.
 
 \subsection{Server architecture}
 
