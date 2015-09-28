@@ -5,12 +5,11 @@ An approach to implementing the single page pattern on today's web that makes it
 \begin{itemize}
 \item Every view must have a real URL. On a normal web page, at any time I can grab what's in my browser's URL bar and either share it or bookmark it.
 \item Every link must be a real link. On a normal web page, I can view a link's destination by hovering it with my mouse; right-clicking produces a menu of link-specific options. So many otherwise-good pages try to implement their own link-like behavior by catching clicks on specific DOM nodes but then screw up corner case behaviors like middle-click.
-\item It's ok to be less awesome on old browsers. (Of course, whether this is actually true depends on your site's goals.) One tactic for old browsers is just to fail gracefully: if the site still works but is just slower, that's ok. For example, Gmail used to implement each of its buttons with a soup of DOM nodes to get the gradients and rounded corners to show on IE6; on today's web, maybe it's ok to just use some newer CSS for those effects and allow the buttons to be square and flat on IE6.
+\item It's ok to be less awesome on old browsers. (Of course, whether this is actually true depends on site's goals.) One tactic for old browsers is just to fail gracefully: if the site still works but is just slower, that's ok. For example, Gmail used to implement each of its buttons with a soup of DOM nodes to get the gradients and rounded corners to show on IE6; on today's web, maybe it's ok to just use some newer CSS for those effects and allow the buttons to be square and flat on IE6.
 \end{itemize}
 
 Because of principle 1,the  app must be capable of rendering any given view from scratch, because the URL load might be a freshly started browser that just loaded a bookmark. Because of principle 2, links must be implemented as plain old <a> tags with an href that points at the URL of the resulting view.
-
-And here, finally, you can sprinkle in the single-page magic. What you want to do is short-circuit some of those link clicks such that the page updates. You can do this in one central place by just intercepting clicks on <a> tags right before the browser is about to use them to navigate, and then use the history.pushState API to make the URL update appropriately. \cite{arc_tech}
+\cite{arc_tech}
 
 \subsection{Local Routing}
 
