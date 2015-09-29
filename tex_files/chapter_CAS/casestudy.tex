@@ -86,21 +86,9 @@ Autore ha delle relazione con altri autori, con delle categorie e anche con tag 
     	"location": {"type": "string"}
 	}
 	"relations": {
-    	"author": {
-     		"type": "belongsTo",
-      		"model": "Author"
-    	},
-    	"category": {
-      		"type": "belongsTo",
-      		"model": "Category"
-    	},
-    	"tags": {
-      		"type": "hasMany",
-      		"model": "Tag"
-    	},
-    	"image": {
-      		"type": "hasOne",
-      		"model": "Image"
+    	"articles": {
+     		"type": "hasMany",
+      		"model": "Article"
     }
 }
 \end{lstlisting}
@@ -126,6 +114,9 @@ These models result in the following HTTP RESTful API, automatically generated b
 	PUT / api / author /: tag_id
 	DELETE / api / author /: tag_id
 \end{lstlisting}
+
+METODI REMOTI DA AGGIUNGERE
+
 
 \subsection{3rd step - UI components definition}
 
