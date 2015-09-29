@@ -7,9 +7,106 @@ Operations that can be done, like upload, delete or get media, is ruled by CORS 
 These operations are direct: none of them is done via server. Server is only used to get the authorization to communicate with the S3 cloud storage service.
 In fact, client makes an AJAX request to server in order to get the Signed URL, that is the request URL combined with the name of S3 Bucket and the dedicated Region.
 The Signed URL pattern represents the Digital Signature security mechanism, as seen in \ref{sec:digsign}.
+
+The Signed URL is requested via an ad hoc API, that is exposed to client side through a remote method.
+Get, Upload and Delete functions have been implemented on the server side using an additional library named AWS SDK for Javascript NodeJS \footnote{ The AWS SDK helps take the complexity out of coding by providing JavaScript objects for AWS services including Amazon S3, Amazon EC2, DynamoDB, and Amazon SWF.} \cite{s3_aws_sdk}.
+
+Each function create a request for a Signed URL to its server.
+Using file's name, bucket's name, bucket's region and user key, the server gives back an URL to which the client can his real HTTP request.
+
 Once the client receive the Signed URL can pass the operation to S3 Service and carry it out.
 Bucket and Region names are stored in \texttt{.env} file and must be set up before on S3 website.
 Moreover, users must set Bucket's CORS Configuration on S3 Admin Panel (as shown in fig. \ref{s3panel}): CRUD operations must be allowed from the user in the CORS Configuration Editor panel.
+
+
+\paragraph{Upload Signed Url Request}
+
+\begin{lstlisting}[language=javascript]
+Image.signed_put = function(file_name, file_type, callback) {
+    var s3 = new aws.S3();
+    var s3_params = {
+      Bucket: S3_BUCKET,
+      Key: file_name,
+      Expires: 60,
+      ContentType: file_type,
+      ACL: 'public-read'
+    };
+    s3.getSignedUrl('putObject', s3_params,
+     function (err, signed_url) {
+      if (err) {
+        callback(err);
+        return;
+      }
+      callback(null, signed_url);
+    });
+  };
+
+  Image.remoteMethod('signed_put', {
+    http: { verb: 'get' },
+    accepts: [
+      {arg: 'file_name', type: 'string'},
+      {arg: 'file_type', type: 'string'}
+    ],
+    returns: {arg: 'signed_url', type: 'string'}
+  });
+\end{lstlisting}
+
+\paragraph{Get Signed Url Request}
+
+\begin{lstlisting}[language=javascript]
+Image.signed_list = function (folder, callback) {
+    var s3 = new aws.S3();
+    var s3_params = {
+      Bucket: S3_BUCKET,
+      EncodingType: 'url',
+      Prefix: folder,
+      MaxKeys: 1000
+    };
+    s3.getSignedUrl('listObjects', s3_params,
+     function (err, signed_url) {
+      if (err) {
+        callback(err);
+        return;
+      }
+      callback(null, signed_url);
+    });
+  };
+
+  Image.remoteMethod('signed_list', {
+    http: { verb: 'get' },
+    accepts: { arg: 'folder', type: 'string' },
+    returns: { arg: 'signed_url', type: 'string' }
+  });
+\end{lstlisting}
+
+
+\paragraph{Delete Signed Url Request}
+
+\begin{lstlisting}[language=javascript]
+Image.signed_delete = function(file_name, callback) {
+    var s3 = new aws.S3();
+    var s3_params = {
+      Bucket: S3_BUCKET,
+      Key: file_name
+    };
+    s3.getSignedUrl('deleteObject', s3_params,
+      function (err, signed_url) {
+      if (err) {
+        callback(err);
+        return;
+      }
+      callback(null, signed_url);
+    });
+  };
+
+  Image.remoteMethod('signed_delete', {
+    http: { verb: 'get' },
+    accepts: {arg: 'file_name', type: 'string'},
+    returns: {arg: 'signed_url', type: 'string'}
+  });
+
+\end{lstlisting}
+
 
 \begin {figure}[h]
 \graphicspath{{images/chapter_s3/}}
@@ -18,11 +115,19 @@ Moreover, users must set Bucket's CORS Configuration on S3 Admin Panel (as shown
 \end {figure}
 
 
+
 \begin {figure}[h]
 \graphicspath{{images/chapter_s3/}}
 \includegraphics[width=\textwidth]{s3panel}
 \caption{S3 CORS Configuration Editor Panel}
 \end {figure}
+
+
+
+
+
+
+
 
 
 \subsection{S3 Component Elements}
@@ -59,7 +164,7 @@ The element named \texttt{api-s3-upload} has been designed to upload new files t
 \label{api-s3-list}
 The element named \texttt{api-s3-list} has been designed to get the list of elements currently in the S3 Bucket.
 \begin{lstlisting}[language=javascript]
-<api-s3-list id="list" list="{{list}}" folder="{{folder}}">
+<api-s3-list id="list" list="{{list}}">
 </api-s3-list>
 \end{lstlisting}
 
@@ -78,8 +183,8 @@ The element named \texttt{api-s3-delete} has been designed to delete an element 
 The element named \texttt{part-s3-list} has been developed to show the list of elements currently in the S3 Bucket
 \begin{lstlisting}[language=html]
 <template>
-    <api-s3-list id="list" list="{{list}}" folder="{{folder}}">
-    </api-s3-list<
+    <api-s3-list id="list" list="{{list}}">
+    </api-s3-list>
 
     <template is="dom-repeat" items="{{list}}" filter="filter">
         <part-s3-list-item item="{{item}}" on-delete="update">
@@ -96,9 +201,11 @@ The second tag, \texttt{<part-s3-list-item>}, creates a visual element for each 
 The element named \texttt{part-s3-list-item} has been developed to show a preview of a selected files and to let the user delete it.
 \begin{lstlisting}[language=javascript]
 
- <api-s3-delete id="request" file-name="{{item.key}}"></api-s3-delete>
+ <api-s3-delete id="request" file-name="{{item.key}}">
+ </api-s3-delete>
  ...
- <button id="delete" on-click="delete_image">delete</button>
+ <button id="delete" on-click="delete_image">delete
+ </button>
  ...
  delete_image: function () {
       this.$.request.send();
@@ -115,7 +222,7 @@ The button tag creates a button that, when clicked, trigger the \texttt{delete i
 The element named \texttt{part-s3-upload} has been developed to allow to users to upload new files to the S3 Bucket.
 
 \begin{lstlisting}[language=javascript]
-<api-s3-upload id="upload" folder="{{folder}}"
+<api-s3-upload id="upload"
       file="{{file}}" file-name="{{fileName}}">
 </api-s3-upload>
 
