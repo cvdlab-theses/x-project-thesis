@@ -357,7 +357,56 @@ Image.signed_list = function (folder, callback) {
 
 \subsection{3rd step - UI components definition}
 
-In this simple example, there is no need to define further components besides the ones provided by the x-project toolkit.
+
+UI components definition consist of the justapposition of previously created HTML tags. In this short example it is shown the creation of an article page.
+To compose the article page there's need to get article informations: title, content, author and images.
+As shown below, HTML code is extremly simple: considering that even the page is a Polymer element, it's enough insert other tags in desired order. 
+
+
+\begin{lstlisting}[language=html]
+<link rel="import" href="../app-page/app-page.html">
+<link rel="import" href="../part-jumbotron/part-jumbotron.html">
+<link rel="import" href="../part-image/part-image.html">
+<dom-module id="page-article">
+  <template>
+      <part-jumbotron id="jumbotron">
+        <header id="header">
+          <h1 id="title">
+            <span>{{article.title}}</span>
+            <span>{{article.author}}</span>
+          </h1>
+        </header>
+      </part-jumbotron>
+
+      <div class="container">
+        <div>
+          <p id= "content"> {{article.content}}</p>
+        </div>
+        <div class="container">
+          <part-image id="image"> </part-image>
+        </div> 
+      </div>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    attached: function() {
+      this.$.image.update();
+    }
+  });
+</script>
+\end{lstlisting}
+
+
+
+The article page component has two main HTML tags: \texttt{part-jumbotron} and \texttt{part-image}.
+
+In \texttt{part-jumboton} article informations are showed: \texttt{{{article.title}}} and \texttt{{{article.author}}}. These informations are extrapolated from article property that is injected in the session by the router.
+
+The other tag, \texttt{part-image}, loads and shows the article's image, by triggering other APIs: the activation of these APIs is made by the \texttt{attached} function that is triggered at page load time.
+
+
 
 \subsection{4th step - UI components assembly}
 
