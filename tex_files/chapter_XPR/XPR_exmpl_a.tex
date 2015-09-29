@@ -1,5 +1,53 @@
-\section{Example}
+\section{Example User Management: Login}
 \label{sec:XPR_exmpl}
 
+The example is based on the user login service. 
+For this function has been implemented on the client side and the backend side. So for the client side has been developed the element \texttt{<form-login>} as for the server side has been developed the element \texttt{<api-user-login>}.
 
-An example is...
+The elements that have been developed are:
+
+\subsubsection{\texttt{<api-user-login>}}
+
+Login a user by with the given credentials.
+
+\begin{lstlisting}[language=html]
+<api-user-login credentials="{{credentials}}"
+collection="{{collection}}" 
+response="{{response}}" error="{{error}}"/>
+\end{lstlisting}
+Where:
+\begin{itemize}
+\item \texttt{credentials} email and password of user.
+\item \texttt{collection} name of collection(Object).
+\item \texttt{response}	HTTP response message(String).
+\item \texttt{error} object of the error response(Object).
+\end{itemize}
+
+\subsubsection{\texttt{<form-login>}}
+
+Create a login form.
+
+\begin{lstlisting}[language=html]
+<form id="form" on-submit="on_submit">
+    <div class="field">
+        <label class="label">email</label>
+        <input class="input" is="iron-input" type="text" 
+    		placeholder="email" 
+            bind-value="{{credentials.email}}">
+    </div>
+    <div class="field">
+        <label class="label">password</label>
+        <input class="input" is="iron-input" type="password" 
+        	placeholder="password" 
+        	bind-value="{{credentials.password}}">
+    </div>
+      	<input type="submit" value="login"/>
+</form>
+\end{lstlisting}
+
+
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr1}
+\caption{Login Element Example}
+\end {figure}
