@@ -50,7 +50,7 @@ UserApp is a cloud-based user management API for web apps. The purpose is to rel
 UserApp provides with user management functionality that results in faster development, faster revenue, more users, and the ability to serve users better by engaging with them more efficiently.\cite{usr_userapp}
 
 \begin{itemize}
-\item User authentication - Have the user authentication ready today. It is possible just a few lines of code away with one of our SDKs.
+\item User authentication - Have the user authentication ready today. It is possible just a few lines of code away with one of SDKs.
 \item One-click integrations - Integrate the users with third-party services with just one click.
 \item Mobile, web, and server - No matter where is need to integrate the user authentication, it got  covered.
 \end{itemize}
@@ -58,7 +58,7 @@ UserApp provides with user management functionality that results in faster devel
 \subsubsection{Auth0}
 
 Auth0 is an enterprise-grade platform for modern identity.
-We give the tools that eliminate the friction of authentication for the applications and APIs - all accessible through the account dashboard.\cite{usr_auth0}
+Auth0 give the tools that eliminate the friction of authentication for the applications and APIs - all accessible through the account dashboard.\cite{usr_auth0}
 
 \begin {figure}[h]
 \graphicspath{{images/chapter_USR/}}
@@ -76,7 +76,7 @@ It is possible connect any application, written on any language or stack to Auth
 \end{itemize}
 
 
-\subsection{User Management API in StrongLoop LoopBack}
+\subsection{User Management Standard API in StrongLoop LoopBack}
 
 X-project is based on StrongLoop LoopBack on the server side.
 LoopBack's built-in User model provides essential user management features such as:
@@ -89,3 +89,100 @@ LoopBack's built-in User model provides essential user management features such 
 In general can extend the User model to suit specific needs, so in most cases, it is don't need to create the own User model from scratch.
 By default, a LoopBack application has a built-in User model defined by user.json
 In particular, it was implemented the connection with MailChimp service, named Mandrill.
+
+\subsection{User Management remote methods}
+
+In addition to the standard APIs, remote methods for email and password changing have been implemented. 
+
+\subsubsection{Change Email}
+
+\begin{lstlisting}[language=html]
+Author.change_email = function (new_email, confirm_email, password, cb) {
+    if (new_email !== confirm_email) {
+      cb({ error: 'email not confirmed' }, null);
+      return;
+    }
+
+    var userId = getCurrentUserId();  
+
+    Author.findById(userId, function (err, user) {
+      if (err) {
+        cb(err, null);
+        return;
+      }
+
+      user.hasPassword(password, function (err, match) {
+        if (!match) {
+          cb({ error: 'invalid password' }, null);
+          return;
+        }
+
+        user.updateAttribute('email', new_email, function (err, user) {
+          if (err) {
+            cb(err, null);
+            return;
+          }
+
+          cb(null, true);
+        });
+	  });       
+	});
+};
+   Author.remoteMethod('change_email', {
+    http: { path: '/change_email', verb: 'post' },
+    accepts: [
+      { arg: 'new_email', type: 'string' },
+      { arg: 'confirm_email', type: 'string' },
+      { arg: 'password', type: 'string' }
+    ],
+    returns: { arg: 'changed', type: 'boolean' }
+  });
+\end{lstlisting}
+
+\subsubsection{Change Password}
+
+\begin{lstlisting}[language=html]
+Author.change_password = function (new_password, confirm_password, password, cb) {
+    if (new_password !== confirm_password) {
+      cb({ error: 'password not confirmed' }, null);
+      return;
+    }
+
+    var userId = getCurrentUserId();  
+
+    Author.findById(userId, function (err, user) {
+      if (err) {
+        cb(err, null);
+        return;
+      }
+
+      user.hasPassword(password, function (err, match) {
+        if (!match) {
+          cb({ error: 'invalid password' }, null);
+          return;
+        }
+
+        user.updateAttribute('password', new_password, function (err, user) {
+          if (err) {
+            cb(err, null);
+            return;
+          }
+
+          cb(null, true);
+        });
+	  });       
+    });
+  };
+   
+  Author.remoteMethod('change_password', {
+    http: { path: '/change_password', verb: 'post' },
+    accepts: [
+      { arg: 'new_password', type: 'string' },
+      { arg: 'confirm_password', type: 'string' },
+      { arg: 'password', type: 'string' }
+    ],
+    returns: { arg: 'changed', type: 'boolean' }
+  });
+\end{lstlisting}
+
+

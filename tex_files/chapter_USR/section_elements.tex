@@ -21,6 +21,12 @@ Where:
 \item \texttt{error} object of the error response(Object).
 \end{itemize}
 
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr1}
+\caption{Login Element}
+\end {figure}
+
 \subsubsection{\texttt{<api-user-logout>}}
 
 Logout a user with the given accessToken id.
@@ -52,6 +58,12 @@ Where:
 \item \texttt{error} object of the error response(Object).
 \end{itemize}
 
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr4}
+\caption{Signup Element}
+\end {figure}
+
 \subsubsection{\texttt{<api-user-reset>}}
 
 Create a short lived acess token for temporary login. Allows users to change passwords if forgotten.
@@ -67,6 +79,18 @@ Where:
 \item \texttt{response}	HTTP response message(String).
 \item \texttt{error} object of the error response(Object).
 \end{itemize}
+
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr3}
+\caption{Reset Element}
+\end {figure}
+
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr4}
+\caption{Login Element}
+\end {figure}
 
 \subsubsection{\texttt{<form-login>}}
 
@@ -88,10 +112,6 @@ Create a login form.
       	<input type="submit" value="login"/>
 </form>
 \end{lstlisting}
-
-\subsubsection{\texttt{<form-login-behaviour>}} 
-
-Create a login behaviour.
 
 \subsubsection{\texttt{<form-signup>}}
 
@@ -148,4 +168,12 @@ Create a reset form.
 </form>
 \end{lstlisting}
 
+\subsubsection{User Settings}
 
+The User Settings is the page where it is possible manage the personal data such as e-mail and password.
+
+\begin {figure}[h]
+\graphicspath{{images/chapter_USR/}}
+\includegraphics[width=\textwidth]{usr2}
+\caption{Settings  Element}
+\end {figure}
