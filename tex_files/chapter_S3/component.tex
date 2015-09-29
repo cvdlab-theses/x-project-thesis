@@ -16,10 +16,10 @@ Using file's name, bucket's name, bucket's region and user key, the server gives
 
 Once the client receive the Signed URL can pass the operation to S3 Service and carry it out.
 Bucket and Region names are stored in \texttt{.env} file and must be set up before on S3 website.
-Moreover, users must set Bucket's CORS Configuration on S3 Admin Panel (as shown in fig. \ref{s3panel}): CRUD operations must be allowed from the user in the CORS Configuration Editor panel.
+Moreover, users must set Bucket's CORS Configuration on S3 Admin Panel: CRUD operations must be allowed from the user in the CORS Configuration Editor panel.
 
 
-\paragraph{Upload Signed Url Request}
+\subsubsection{Upload Signed Url Request}
 
 \begin{lstlisting}[language=javascript]
 Image.signed_put = function(file_name, file_type, callback) {
@@ -51,7 +51,7 @@ Image.signed_put = function(file_name, file_type, callback) {
   });
 \end{lstlisting}
 
-\paragraph{Get Signed Url Request}
+\subsubsection{Get Signed Url Request}
 
 \begin{lstlisting}[language=javascript]
 Image.signed_list = function (folder, callback) {
@@ -80,7 +80,7 @@ Image.signed_list = function (folder, callback) {
 \end{lstlisting}
 
 
-\paragraph{Delete Signed Url Request}
+\subsubsection{Delete Signed Url Request}
 
 \begin{lstlisting}[language=javascript]
 Image.signed_delete = function(file_name, callback) {
