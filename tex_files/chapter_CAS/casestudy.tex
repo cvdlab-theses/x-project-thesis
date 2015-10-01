@@ -11,7 +11,7 @@ As to a blog platform, the essential entities to be modelled are the following: 
 
 Il modello articolo definisce la struttura principale del post che si intende pubblicare, tra le porprietà principali: il titolo dell'articolo il contenuto e le date di  creazione, aggiornamento e pubblicazione. Questo modello ha delle relazioni con il modello autore, categoria, tag e immagine.
 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=json]
 {
 	"name": "Article",
 	"properties": {
@@ -57,7 +57,7 @@ Il modello articolo definisce la struttura principale del post che si intende pu
 
 Il modello tag rappresenta la parole chiave o un termine associato a quel specifico articolo, in modo da renderlo classificabile e indicizzato alle ricerche,
 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=json]
 {
 	"name": "Category",
 	"properties": {
@@ -72,7 +72,7 @@ Il modello tag rappresenta la parole chiave o un termine associato a quel specif
 Questo modello rappresenta il creatore dell'articolo, tra le varie proprietà: nome, ruolo, e il nome per esteso.
 Autore ha delle relazione con altri autori, con delle categorie e anche con tag e immagini.
 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=json]
 {
 	"name": "Author",
 	"properties": {
@@ -172,7 +172,7 @@ These models result in the following HTTP RESTful API, automatically generated b
 
 \subsubsection{Change Email}
 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=javascript]
 Author.change_email = function (new_email, 
 	confirm_email, password, cb) {
     if (new_email !== confirm_email) {
@@ -219,7 +219,7 @@ Author.change_email = function (new_email,
 
 \subsubsection{Change Password}
 
-\begin{lstlisting}[language=html]
+\begin{lstlisting}[language=javascript]
 Author.change_password = function (new_password, 
 	confirm_password, password, cb) {
     if (new_password !== confirm_password) {
