@@ -9,7 +9,7 @@ As to a blog platform, the essential entities to be modelled are the following: 
 
 \subsubsection{Model - Article}
 
-Il modello articolo definisce la struttura principale del post che si intende pubblicare, tra le porprietà principali: il titolo dell'articolo il contenuto e le date di  creazione, aggiornamento e pubblicazione. Questo modello ha delle relazioni con il modello autore, categoria, tag e immagine.
+The model \texttt{article} defines the main post structure that must be published. Main features are: title, content and creation, udpdate and publication date. This model has relations with author, category, tag and image models. 
 
 \begin{lstlisting}[language=json]
 {
@@ -55,7 +55,7 @@ Il modello articolo definisce la struttura principale del post che si intende pu
 \end{lstlisting}
 \subsubsection{Model - Category}
 
-Il modello tag rappresenta la parole chiave o un termine associato a quel specifico articolo, in modo da renderlo classificabile e indicizzato alle ricerche,
+The model \texttt{tag} represents the keyword or an associate word associated to a particular article, that makes it classificable and indexed.
 
 \begin{lstlisting}[language=json]
 {
@@ -69,8 +69,7 @@ Il modello tag rappresenta la parole chiave o un termine associato a quel specif
 \end{lstlisting}
 \subsubsection{Model - Author}
 
-Questo modello rappresenta il creatore dell'articolo, tra le varie proprietà: nome, ruolo, e il nome per esteso.
-Autore ha delle relazione con altri autori, con delle categorie e anche con tag e immagini.
+The model \texttt{author} represents the article creator. Its features are: nickname, role and full name. The author has relations with other authors, categories, tags and images.
 
 \begin{lstlisting}[language=json]
 {

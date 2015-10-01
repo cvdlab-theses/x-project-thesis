@@ -6,13 +6,13 @@ This specific component has been developed in order to store and manage media fi
 Operations that can be done, like upload, delete or get media, is ruled by CORS (\ref{subsec:S3_cors}) pattern.
 These operations are direct: none of them is done via server. Server is only used to get the authorization to communicate with the S3 cloud storage service.
 In fact, client makes an AJAX request to server in order to get the Signed URL, that is the request URL combined with the name of S3 Bucket and the dedicated Region.
-The Signed URL pattern represents the Digital Signature security mechanism, as seen in \ref{sec:digsign}.
+The Signed URL pattern represents the Digital Signature security mechanism, as seen in \ref{sec:S3_digsign}.
 
 The Signed URL is requested via an ad hoc API, that is exposed to client side through a remote method.
 Get, Upload and Delete functions have been implemented on the server side using an additional library named AWS SDK for Javascript NodeJS \footnote{ The AWS SDK helps take the complexity out of coding by providing JavaScript objects for AWS services including Amazon S3, Amazon EC2, DynamoDB, and Amazon SWF.} \cite{s3_aws_sdk}.
 
 Each function create a request for a Signed URL to its server.
-Using file's name, bucket's name, bucket's region and user key, the server gives back an URL to which the client can his real HTTP request.
+Using file's name, bucket's name, bucket's region and user key, the server gives back an URL to which the client can address his real HTTP request.
 
 Once the client receive the Signed URL can pass the operation to S3 Service and carry it out.
 Bucket and Region names are stored in \texttt{.env} file and must be set up before on S3 website.
@@ -137,12 +137,12 @@ Image.signed_delete = function(file_name, callback) {
 In order to use Media Management S3 Component in an X-Project App there's need to combinate six different X-Elements:
 \begin{itemize}
 
-\item\texttt{api-s3-upload},
-\item\texttt{api-s3-list},
-\item\texttt{api-s3-delete},
-\item\texttt{part-s3-list},
+\item\texttt{api-s3-upload}
+\item\texttt{api-s3-list}
+\item\texttt{api-s3-delete}
+\item\texttt{part-s3-list}
 \item\texttt{part-s3-list-item}
-\item\texttt{part-s3-upload}.
+\item\texttt{part-s3-upload}
 
 \end{itemize}
 

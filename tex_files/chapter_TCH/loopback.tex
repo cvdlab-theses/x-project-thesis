@@ -9,15 +9,15 @@ LoopBack generates model API from the models schemas, to let CRUD operations on 
 
 LoopBack models automaticaly have a standard set of HTTP endpoints that provide REST APIs for create, read, update, and delete (CRUD) operations on model data:
 \begin{itemize}
-\item POST /Model — Create a new instance of the model and persist it into the data source.
-\item GET /Model — Find all instances of the model matched by filter from the data source.
-\item PUT /Model — Update an existing model instance or insert a new one into the data source.
-\item PUT /Model/{id} — Update attributes for a model instance and persist it into the data source.
-\item GET /Model/{id} — Find a model instance by id from the data source.
-\item DELETE /Model/{id} — Delete a model instance by id from the data source.
-\item GET /Model/count — Count instances of the model matched by where from the data source.
-\item GET /Model/findOne Find first instance of the model matched by filter from the data source.
-\item POST /Model/update — Update instances of the model matched by where from that data source.
+\item \texttt{\textbf{POST /Model}} — Create a new instance of the model and persist it into the data source.
+\item \texttt{\textbf{GET /Model}} — Find all instances of the model matched by filter from the data source.
+\item \texttt{\textbf{PUT /Model}} — Update an existing model instance or insert a new one into the data source.
+\item \texttt{\textbf{PUT /Model/{id}}} — Update attributes for a model instance and persist it into the data source.
+\item \texttt{\textbf{GET /Model/{id}}} — Find a model instance by id from the data source.
+\item \texttt{\textbf{DELETE /Model/{id}}} — Delete a model instance by id from the data source.
+\item \texttt{\textbf{GET /Model/count}} — Count instances of the model matched by where from the data source.
+\item \texttt{\textbf{GET /Model/findOne}} Find first instance of the model matched by filter from the data source.
+\item \texttt{\textbf{POST /Model/update}} — Update instances of the model matched by where from that data source.
 \end{itemize}
 
 
@@ -51,54 +51,37 @@ The model JSON file defines models, relations between models, and access to mode
 }
 \end{lstlisting}
 
-\subsection{Top-level Properties}
+Where:
+
 \begin{itemize}
-\item Name
+\item \texttt{``name''}: Name of the model.
 
-Name of the model.
+\item \texttt{``description''}: Optional description of the model.
 
-\item Description
+\item \texttt{``base''}: Name of another model that this model extends. The model will ``inherit'' properties and methods of the base model.
 
-Optional description of the model.
-
-\item Base
-
-Name of another model that this model extends. The model will ``inherit'' properties and methods of the base model.
-
-\item IdInjection
-
-Whether to automatically add an id property to the model:
+\item \texttt{``IdInjection''}: Whether to automatically add an id property to the model:
 \begin{itemize}
-\item true - id property is added to the model automatically. This is the default.
-\item false - id property is not added to the model.
+\item \texttt{true} - id property is added to the model automatically. This is the default.
+\item \texttt{false} - id property is not added to the model.
 \end{itemize}
 
-\item Strict
-
-Specifies whether the model accepts only predefined properties or not. One of:
+\item \texttt{``strict''}: Specifies whether the model accepts only predefined properties or not. One of:
 \begin{itemize}
-\item true - Only properties defined in the model are accepted. Used to ensure the model accepts only predefined properties.
-\item false - The model is an open model and accepts all properties, including ones not predefined in the model. This mode is useful to store free-form JSON data to a schema-less database such as MongoDB.
-\item validate The unknown properties will be reported as validation errors.
-\item throw Throws an exception if properties not defined for the model are used in an operation.
-\item Undefined Defaults to false unless the data source is backed by a relational database such as Oracle or MySQL.
+\item \texttt{true} - Only properties defined in the model are accepted. Used to ensure the model accepts only predefined properties.
+\item \texttt{false} - The model is an open model and accepts all properties, including ones not predefined in the model. This mode is useful to store free-form JSON data to a schema-less database such as MongoDB.
+\item \texttt{validate} - The unknown properties will be reported as validation errors.
+\item \texttt{throw} - Throws an exception if properties not defined for the model are used in an operation.
+\item \texttt{undefined} - Defaults to false unless the data source is backed by a relational database such as Oracle or MySQL.
 \end{itemize}
 
-\item Options
+\item \texttt{``options''}: JSON object that specifies model options.
 
-JSON object that specifies model options.
+\item \texttt{``properties''}: JSON object that specifies the properties in the model.
 
-\item Properties
+\item \texttt{``relations''}: Object containing relation names and relation definitions.
 
-JSON object that specifies the properties in the model.
-
-\item Relations
-
-Object containing relation names and relation definitions.
-
-\item Acls
-
-Set of ACL specifications that describes access control for the model.
+\item \texttt{``acls''}: Set of ACL specifications that describes access control for the model.
 
 \end{itemize}
 

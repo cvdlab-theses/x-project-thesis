@@ -1,6 +1,8 @@
 \section{X-Elements}
 \label{sec:XPR_xel}
 
+All the following elements are retrievable on a Github repository \cite{xpr_api}.
+
 ``Everything is an element'', from an AJAX request to an entire web page. Every part of the website is encapsulated inside an element.
 
 X-project provides a set of Polymer elements for local routing, API requests, forms, lists, style and admin panel, as listed below.
@@ -22,7 +24,7 @@ The following elements perform local routing (for Single Page Application).
 <a is="x-link" href="{{href}}">{{link}}/>
 \end{lstlisting}
 
-\subsection{Elements for API}\cite{xpr_api}
+\subsection{Elements for API}
 
 The following elements are used to create API.
 
@@ -37,11 +39,11 @@ error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{model} name of model.(String)
-\item \texttt{data} user data.(Object)
-\item \texttt{collection} name of collection(Object).
-\item \texttt{response}	HTTP response message(String).
-\item \texttt{error} object of the error response(Object).
+\item \texttt{model} name of model (String)
+\item \texttt{data} user data (Object)
+\item \texttt{collection} name of collection (Object)
+\item \texttt{response}	HTTP response message (String)
+\item \texttt{error} object of the error response (Object)
 \end{itemize}
 
 \paragraph{\texttt{<api-model-get>}}
@@ -55,10 +57,10 @@ response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{model-id} id of model(String).
-\item \texttt{collection} name of collection(Object).
-\item \texttt{response}	HTTP response message(String).
-\item \texttt{error} object of the error response(Object).
+\item \texttt{model-id} id of model (String)
+\item \texttt{collection} name of collection (Object)
+\item \texttt{response}	HTTP response message (String)
+\item \texttt{error} object of the error response (Object)
 \end{itemize}
 
 \paragraph{\texttt{<api-model-update>}}
@@ -85,7 +87,7 @@ response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{where} where clause(Object).
+\item \texttt{where} where clause (Object)
 \end{itemize}
 
 \paragraph{\texttt{<api-model-delete>}}
@@ -99,7 +101,7 @@ response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{model-id} id of model(String).
+\item \texttt{model-id} id of model (String)
 \end{itemize}
 
 \paragraph{\texttt{<api-model-exists>}}
@@ -113,8 +115,8 @@ error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{model-id} id of model(String).
-\item \texttt{exists} True if the instance with the specified ID exists; false otherwise(Output).
+\item \texttt{model-id} id of model (String)
+\item \texttt{exists} True if the instance with the specified ID exists; false otherwise (Output)
 \end{itemize}
 
 \paragraph{\texttt{<api-model-count>}}
@@ -127,7 +129,7 @@ response="{{response}}" error="{{error}}"/>
 \end{lstlisting}
 Where:
 \begin{itemize}
-\item \texttt{count} number of instances updated(Output).
+\item \texttt{count} number of instances updated (Output)
 \end{itemize}
 
 \subsection{Elements for forms}
