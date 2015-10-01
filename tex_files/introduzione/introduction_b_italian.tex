@@ -1,0 +1,32 @@
+\section{Introduzione(ITA)}
+
+Sin da le origini di Internet, la possibilità di creare e pubblicare contenuti sul web ha fatto sì che i Content Management Systems prendessero piede e avessero successo. Prodotti come Joomla! o WordPress, nati per gestire siti web o semplici blog, si sono evoluti per supportare applicazioni web di qualsiasi tipo (dal portfolio personale allo shopping on-line). Da statistiche di gennaio 2015 risulta che oltre il 25 \% dei primi dieci milioni di siti web è gestito con i maggiori CMS\cite{cms_stats}. Questa evoluzione è stata permessa da un architettura basata su plug-in, dove ogni plug-in è responsabile di gestire un sottoinsieme di funzionalità di tutta l'applicazione, presentandosi all'utente attraverso una semplice interfaccia di configurazione e una gestione estremamente accessibile.
+Il gran numero di plug-in disponibile copre la maggior parte delle personalizzazioni più comunemente richieste, evitando così la scrittura di codice ad-hoc. Tuttavia, l'attuazione di specifiche caratteristiche funzionali richiede inevitabilmente l'intervento dello sviluppatore a livello di codice.
+
+Quando lo sforzo richiesto per aggiungere funzioni personalizzate a un CMS risulta troppo costoso, è utile adottare un web framework. Un web framework è costituito da una serie di servizi software che mira ad alleviare il lavoro con comuni attività di sviluppo. Lo sforzo di codifica delle Applicazioni Web, sebbene venga facilitato dal web framework, è comunque premiato con una maggiore possibilità di estensione e personalizzazione dell'applicazione risultante.
+Le caratteristiche più desiderabili per un web framework sono: la gestione degli utenti, gestione delle sessioni, l'accesso al database tramite HTTP API RESTful. Al fine di velocizzare in modo efficace lo sviluppo di applicazioni web, queste strutture dovrebbero essere fornite basandosi principalmente sul file di configurazione esterni e meno sul codice di procedura \cite{MIPRO}.
+
+In questa tesi viene introdotta una piattaforma software chiamata X-Project. Essa consiste in una una metodologia di sviluppo contornata da una libreria di componenti Web e una serie di linee guida.
+
+La libreria dei componenti Web viene applicata su un web framework potente, Loopback di Strongloop, realizzando uno strumento prototipale ibrido che riunisce la personalizzazione di un framework web moderno con la facilità d'uso dei tradizionali CMS.
+
+Tale libreria è nata in maniera naturale durante l'utilizzo del toolkit e, successivamente, è stato standardizzato un processo di sviluppo documento driven che polarizza il concetto di riuso del codice la cui leggibilità, manutenibilità e estendibilità risulta estremamente aumentata.
+
+Le linee guida sono state redatte in modo da fornire un aiuto agli utenti per avere diritti su tutta la struttura
+
+Primo obiettivo di questo progetto è la creazione di una piattaforma in grado di avvolgere le caratteristiche del CMS e di un web framework per applicazioni.
+X-Project mira a semplificare la vita agli sviluppatori di applicazioni web nella creazione e dare loro la possibilità di comporre facilmente, tramite le librerie di componenti web, pagine fatte di componenti riutilizzati.
+Riusabilità e l'accesso ai componenti riutilizzabili è una caratteristica importante che X-Project prende in prestito dallo standard dei Web Components.
+Come detto in \ref{sec: XPR_xpr}, ``Tutto è un elemento, anche un servizio'' questa è la filosofia di X-Project: ogni tipo di funzione o di struttura è incapsulato in elementi Polymer, portando a livelli estremi il concetto dei componenti web.
+Inoltre, utilizzando il modello Single Page Application, X-Project cerca di ottimizzare i tempi di caricamento delle web application.
+
+La scelta di tecnologie all'avanguardia, come Polymer-Project di Google, è stata dettata sia dalla sfida insita nell'uso di pattern di sviluppo sconosciuti, sia dal fascino rappresentato dal ``nuovo''. 
+
+X-Project si colloca alla fine del percorso naturale composto dai CMS orientati all'utente e dai web application framework orientati allo sviluppatore (vedi \ref{sec:CMS_class}), provando a fondere la semplicità d'utilizzo dei CMS con il livello di possibilità di personalizzazione dei web application frameworks.
+
+Questa tesi è suddivisa in due parti ed è organizzata come segue. La Parte Uno è composta da tre capitoli. Il Capitolo Uno descrive lo stato dell'arte del mondo dei CMS, fornendo anche una classificazione per tipo e soffermandosi ad analizzare quattro dei maggiori prodotti presenti sul mercato. Il secondo capitolo analizza le tecnologie utilizzate, descrivendo l'approccio tecnico e metodologico di ognuna di esse. Il terzo capitolo fornisce una panoramica sul pattern di sviluppo detto Single Page Application, esponendone vantaggi e svantaggi ed il funzionamento tecnico.
+
+La seconda Parte è composta da quattro capitoli. Il capitolo quattro descrive il progetto nella sua totalità, esponendo l'anima di X-Project, le funzionalità e le caratteristiche.
+Il quinto e il sesto capitolo si concentrano su componenti specifici, rispettivamente, il Media Management S3 Component e lo User Management Component, e su tutti i concetti teorici e pratici che si celano dietro all'elemento finale.
+Il settimo capitolo mostra un caso d'uso evidenziando, con snippet e screenshot, i punti salienti dell'implementazione di una web application tramite X-Project.
+Infine, l'ottavo ed ultimo capitolo, espone le conclusioni tratte e fornisce dei possibili sviluppi futuri per il progetto.
