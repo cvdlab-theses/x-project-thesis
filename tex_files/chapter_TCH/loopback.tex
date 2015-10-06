@@ -1,13 +1,13 @@
 \section{StrongLoop LoopBack}
 \label{sec:TCH_loopback}
 
-In this section there will be an overview about LoopBack.
+This section provides an overview of LoopBack.
 
 Built on top of the open source LoopBack framework, the StrongLoop API Platform is the first end-to-end platform for the full API lifecycle that allows to visually develop REST APIs in Node and get them connected to new and legacy data. In addition, the API Platform features built-in mBaaS\footnote{Mobile Backend as a service (MBaaS), also known as ``backend as a service'' (BaaS), is a model for providing web and mobile app developers with a way to link their applications to backend cloud storage and APIs exposed by back end applications while also providing features such as user management, push notifications, and integration with social networking services.} features like push and offline sync, plus graphical tools with DevOps features for clustering, profiling and monitoring Node apps.
 
 LoopBack generates model API from the models schemas, to let CRUD operations on models.
 
-LoopBack models automaticaly have a standard set of HTTP endpoints that provide REST APIs for create, read, update, and delete (CRUD) operations on model data:
+LoopBack models automatically have a standard set of HTTP endpoints that provide REST APIs for create, read, update, and delete (CRUD) operations on model data:
 \begin{itemize}
 \item \texttt{\textbf{POST /Model}} — Create a new instance of the model and persist it into the data source.
 \item \texttt{\textbf{GET /Model}} — Find all instances of the model matched by filter from the data source.
@@ -68,7 +68,7 @@ Where:
 
 \item \texttt{``strict''}: Specifies whether the model accepts only predefined properties or not. One of:
 \begin{itemize}
-\item \texttt{true} - Only properties defined in the model are accepted. Used to ensure the model accepts only predefined properties.
+\item \texttt{true} - Only properties defined in the model are accepted. Used to ensure that the model accepts only predefined properties.
 \item \texttt{false} - The model is an open model and accepts all properties, including ones not predefined in the model. This mode is useful to store free-form JSON data to a schema-less database such as MongoDB.
 \item \texttt{validate} - The unknown properties will be reported as validation errors.
 \item \texttt{throw} - Throws an exception if properties not defined for the model are used in an operation.

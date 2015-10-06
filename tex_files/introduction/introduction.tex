@@ -1,32 +1,32 @@
-Since the beginning of Internet, the ability to create and publish content on the web has made the success of Content Management Systems. Products like Joomla! or WordPress, born to handle simple websites or blogs, are evolved to support web applications of any sort (from personal portfolio to online shopping), running as of January 2015 more than 25\% of the top ten million websites \cite{cms_stats}. This evolution has been allowed by a plug-in based architecture, where each plug-in is responsible to handle a functionality subset of the whole application, presenting the user through a simple accessible configuration and management interface.
-The large number of available plug-ins covers most of the common and frequently required customizations, thus avoiding to write ad-hoc code. Nevertheless, the implementation of specific functional characteristics inevitably requires to intervene at code level.
+Since the beginning of Internet, the ability to create and publish content on the web has made the success of Content Management Systems. Products like Joomla! or WordPress, born to handle simple websites or blogs, have evolved to support web applications of any sort (from personal portfolio to online shopping). running as of January 2015 more than 25\% of the top ten million websites \cite{cms_stats} has been managed from the major CMSs. This evolution has been allowed by a plug-in based architecture, where each plug-in is responsible for handling a functionality subset of the whole application, presenting the user through a simple accessible configuration and management interface.
+The large number of available plug-ins covers most of the common and frequently required customizations, thus avoiding writing ad-hoc code. Nevertheless, the implementation of specific functional characteristics inevitably requires to intervene at code level.
 
-When the effort required to add custom features to a CMS results too expensive, a web framework can be adopted instead. A web framework consists of a set of software facilities that aims to alleviate the overhead associate with common development activities. Web application coding effort, while eased by the web framework, is anyway rewarded with an increased level of extensibility and customizability of the resulting application.
-The most desirable features for a web framework are: user management, session management, database access via HTTP RESTful API. In order to effectively speed up web applications development, these facilities should be provided relying mostly on external configuration files and less on procedural code \cite{MIPRO}.
+When the effort required to add custom features to a CMS results too expensive, a web framework can be adopted instead. A web framework consists of a set of software facilities aimed to alleviating the overhead associated with common development activities. Web application coding effort, while eased by the web framework, is anyway rewarded with an increased level of extensibility and customizability of the resulting application.
+The most desirable features for a web framework are user management, session management, database access via HTTP RESTful API. In order to effectively speed up web applications development, these facilities should be provided relying mostly on external configuration files and less on procedural code \cite{MIPRO}.
 
 In this thesis a software platform named X-Project is introduced. It consists of a Web Component library, a development methodology and a set of guidelines.
 
-The Web Components library is applied over a powerful web framework, Loopback by Strongloop, and realizes an hybrid prototypal tool which brings together the customizability of a modern web framework with the ease of use of traditional CMSs.
+The Web Components library is applied over a powerful web framework, Loopback by Strongloop, and creates an hybrid prototypal tool which brings together the customizability of a modern web framework with the ease of use of traditional CMSs.
 
-It has been naturally prompt by the use of the toolkit and, then, standardized a document-driven development process that polarizes the concept of reusing the code whose overall readability, maintainability and extendibility result dramatically increased.
+A document-driven development process has been naturally prompt by the use of the toolkit. This methodology polarizes the concept of reusing the code whose overall readability, maintainability and extendibility result dramatically increased.
 
-Guidelines have been drafted in order to provide an aid to users to get the straight of the entire structure.
+Guidelines have been drafted in order to provide users with the aid to get straight to the entire structure.
 
 First goal of this project is the creation of a platform that can wrap the features of CMSs and web application frameworks. 
-X-Project aims to simplify developers life in web applications creation and give them the chance to easily compose, via web components libraries, pages made of reused components.
-Reusability and access to reusable components is an important feature that X-Project borrows from Web Components standard.
-As further said in \ref{sec:XPR_xpr}, ``Everything is an element, even a service'' is the X-Project's philosophy: every kind of function or structure is encapsulated in Polymer elements, carrying to extreme levels web components concept. 
-Moreover, using Single Page Application pattern, X-Project tries to streamline loading times of web applications.
+X-Project aims to simplify developers' life in creating web applications and to give them the chance to easily compose, via web components libraries, pages made of reused components.
+Reusability and access to reusable components are important features that X-Project borrows from Web Components standard.
+As said further in \ref{sec:XPR_xpr}, ``Everything is an element, even a service'' is the X-Project's philosophy: every kind of function or structure is encapsulated in Polymer elements, and brings the Web Components concept to extreme levels. 
+Moreover, by using Single Page Application pattern, X-Project tries to streamline loading times of web applications.
 
-The choice of cutting edge technologies, such as Polymer-Project by Google, has been done both to meet the challenge of new and unknown development pattern, and to test the newest technologies.
+The choice of cutting edge technologies, such as Polymer-Project by Google, has been made both to meet the challenge of new and unknown development pattern, and to test the newest technologies.
 
-X-Project is located at the end of a natural path composed by user oriented CMSs and developer oriented web application framework (see \ref{sec:CMS_class}), trying to fuse CMSs ease of use with web application frameworks customization level.
+X-Project is located at the end of a natural path composed of user oriented CMSs and developer oriented web application framework (see \ref{sec:CMS_class}), trying to fuse CMSs ease of use with web application frameworks customization level.
 
-The remainder of this document is divided in two parts and organized as follows. Part One counts of three chapters. Chapter One describes the state of the art of CMS's world, giving a classification and focusing on four of the major CMSs on the market. Chapter Two analyzes every used technology, describing the methodological approach of each one. Chapter Three provides an overview of Single Page Application development pattern, explaining pros and cons and technical functioning.
+The rest of this document is divided in two parts and organized as follows. Part One consists of three chapters. Chapter One describes the state of the art of CMS's world, giving a classification and focuses on four of the major CMSs on the market. Chapter Two analyzes every used technology and describes the methodological approach of each one. Chapter Three provides an overview of Single Page Application development pattern and explains pros and cons and technical functioning.
 
-Part two is composed by four chapters. Chapter Four describes the project in its entirety, exposing the core of X-Project, its functionalities and its features.
-Chapter Five and six focus on specific components that have been developed, Media Management S3 Component and User Management Component, and on all the theorical and practical concepts that are behind the ideation of the component. 
-Chapter seven presents a real use case highlighting, with configuration steps and code snippets the major aspects of a web application implementation with X-Project.
+Part two is composed of four chapters. Chapter Four describes the project in its entirety, by exposing the core of X-Project, its functionalities and its features.
+Chapters Five and Six focus on specific components that have been developed, Media Management S3 Component and User Management Component, and on all the theorical and practical concepts that are behind the ideation of the component. 
+Chapter Seven presents a real use case highlighting, with configuration steps and code snippets the major aspects of a web application implementation with X-Project.
 Finally, Chapter eight, exposes project conclusions and further implementations of the work.
 
 

@@ -1,9 +1,9 @@
 \section{S3 Component - Example}
 \label{sec:S3_exmpl}
 
-First example concerns the upload actions of the component.
-As shown before, \texttt{part-s3-upload} element calls an \texttt{api-s3-upload} element to handle the transfer from local computer to S3 cloud service.
-In the HTML code of \texttt{part-s3-upload} element are implemented both the informations and input tags and the binding with the API.
+The first example concerns the upload actions of the component.
+As shown before, \texttt{part-s3-upload} element calls an \texttt{api-s3-upload} element to handle the transfer from a local computer to S3 cloud service.
+In the HTML code of \texttt{part-s3-upload} element both the informations and input tags and the binding with the API are implemented.
 
 \subsection{Example 1 - \texttt{part-s3-upload}}
 
@@ -36,11 +36,11 @@ href="/components/api-s3-upload/api-s3-upload.html">
 
 \end{lstlisting}
 
-In this case, \texttt{api-s3-upload} the is triggered by the \texttt{on-change} function applied on the input box. As shown above \texttt{on-change} function checks the integrity of the file and save its name, then, using \$ selector that puts off to the tag with \texttt{id=``upload''}, triggers the API.
+In this case, the \texttt{api-s3-upload} is triggered by the \texttt{on-change} function applied on the input box. As shown above, \texttt{on-change} function checks the integrity of the file and saves its name, then, using \$ selector that puts off to the tag with \texttt{id=``upload''}, triggers the API.
 
 \subsection{Example 2 - \texttt{part-list}}
 
-Second example concerns the retrievement of data to show.
+Second example concerns the retrievement of data to be shown.
 As shown before, \texttt{part-s3-list} element calls an \texttt{api-s3-list} element to handle the GET request and the retrievement of data.
 In the HTML code of \texttt{part-s3-list} element there is a binding to \texttt{part-s3-list-item} element that manages the visualization of the retrieved informations.
 
@@ -82,12 +82,12 @@ In the HTML code of \texttt{part-s3-list} element there is a binding to \texttt{
 
 \end{lstlisting}
 
-In this case, \texttt{api-s3-list} the is triggered at page loading time.
-Moreover, in \texttt{filter} function, that is called for each object, saves the url for further comunications.
+In this case, the \texttt{api-s3-list} is triggered at page loading time.
+Moreover, in \texttt{filter} function, that is called for each object, the url is saved for further comunications.
 
 \subsection{Example 3 - \texttt{part-list-item}}
 
-Third example concerns the retrievement and visualization actions of the component.
+The third example concerns the retrievement and visualization actions of the component.
 As shown before, \texttt{part-list-item} is triggered by \texttt{part-list} element. \texttt{part-list-item}, in turn, triggers \texttt{api-s3-delete} API.
 This element shows the image saved in S3 Bucket and its additional informations. Moreover \texttt{part-list-item} provides a button to delete the image from the bucket.
 
@@ -134,12 +134,5 @@ href="/components/api-s3-delete/api-s3-delete.html">
 \end{lstlisting}
 
 
-In this case, \texttt{api-s3-delete} the is triggered by the \texttt{on-click} function applied on the delete button. As shown above \texttt{on-click} function, using \$ selector that puts off to the tag with \texttt{id=``request''}, triggers the API.
-
-
-\begin {figure}[h]
-\graphicspath{{images/chapter_s3/}}
-\includegraphics[width=\textwidth]{s3_example}
-\caption{S3 Component example - Upload and preview functions}
-\end {figure}
+In this case, the \texttt{api-s3-delete} is triggered by the \texttt{on-click} function applied on the delete button. As shown above, \texttt{on-click} function, using \$ selector that puts off to the tag with \texttt{id=``request''}, triggers the API.
 

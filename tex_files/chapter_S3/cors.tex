@@ -7,7 +7,7 @@ A web page may freely embed images, stylesheets, scripts, iframes, videos and so
 
 CORS defines a way in which a browser and server can interact to safely determine whether or not to allow the cross-origin request. It allows for more freedom and functionality than purely same-origin requests, but is more secure than simply allowing all cross-origin requests. It is a recommended standard of the W3C.
 
-The CORS standard describes new HTTP headers which provide browsers and servers a way to request remote URLs only when they have permission. Although some validation and authorization can be performed by the server, it is generally the browser's responsibility to support these headers and respect the restrictions they impose.
+The CORS standard describes new HTTP headers which provide browsers and servers with a way to request remote URLs only when they have permission. Although some validation and authorization can be performed by the server, it is generally the browser's responsibility to support these headers and respect the restrictions they impose.
 
 For AJAX and HTTP request methods that can modify data (usually HTTP methods other than GET, or for POST usage with certain MIME types), the specification mandates that browsers ``preflight'' the request, soliciting supported methods from the server with an HTTP OPTIONS request header, and then, upon ``approval'' from the server, sending the actual request with the actual HTTP request method. Servers can also notify clients whether ``credentials'' (including Cookies and HTTP Authentication data) should be sent with requests \cite{s3_cors}. 
 

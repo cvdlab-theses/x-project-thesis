@@ -1,7 +1,7 @@
 \section{Case study}
 \label{sec:CAS_castudy}
 
-In this section the design and the implementation of a blog platform is presented.
+In this section the design and the implementation of a blog platform are presented.
 
 \subsection{1st step - Models schemas definition}
 
@@ -102,9 +102,9 @@ These models result in the following HTTP RESTful API, automatically generated b
 
 \texttt{\textbf{DELETE /api/Authors/{id}}} Delete a model instance by id from the data source.
 
-\texttt{\textbf{POST /api/changeEmail}} Change email a model instance.
+\texttt{\textbf{POST /api/changeEmail}} Change email of a model instance.
 
-\texttt{\textbf{POST /api/changePassword}} Change password a model instance.
+\texttt{\textbf{POST /api/changePassword}} Change password of a model instance.
 
 \texttt{\textbf{GET /api/count}} Count instances of the model matched by where from the data source.
 
@@ -159,11 +159,11 @@ These models result in the following HTTP RESTful API, automatically generated b
 
 \texttt{\textbf{GET /Images}} Find all instances of the model matched by filter from the data source.
 
-\texttt{\textbf{POST /Images/upload}} Upload a new instances into data source.
+\texttt{\textbf{POST /Images/upload}} Upload a new instance into data source.
 
 \texttt{\textbf{GET /Images/{id}}} Find a model instance by id from the data source
 
-\texttt{\textbf{PUT /Images/{id}}} Update attributes dor a model instance and persist it into the data source.
+\texttt{\textbf{PUT /Images/{id}}} Update attributes of a model instance and persist it into the data source.
 
 \texttt{\textbf{DELETE /Images/{id}}} Deletes a model instance by id from the data source.
 
@@ -357,9 +357,9 @@ Image.signed_list = function (folder, callback) {
 \subsection{3rd step - UI components definition}
 
 
-UI components definition consist of the justapposition of previously created HTML tags. In this short example it is shown the creation of an article page.
-To compose the article page there's need to get article informations: title, content, author and images.
-As shown below, HTML code is extremly simple: considering that even the page is a Polymer element, it's enough insert other tags in desired order. 
+UI components definition consist of the justapposition of previously created HTML tags. This short example shows the creation of an article page.
+To compose the article page it is necessary to get article informations: title, content, author and images.
+As shown below, HTML code is extremly simple: considering that even the page is a Polymer element, it's enough to insert other tags in desired order. 
 
 
 \begin{lstlisting}[language=html]
@@ -409,9 +409,9 @@ The other tag, \texttt{part-image}, loads and shows the article's image, by trig
 
 \subsection{4th step - UI components assembly}
 
-Since a snippet is worth a thousand words, in the following the code of the pages of the app is shown. It is important to remark how easily a page can be built without writing code but assembling elements.
+Since a snippet is worth a thousand words, in the following pages, the code of the pages of the app is shown. It is important to remark how easily a page can be built without writing code, but byassembling elements.
 
-Tha admin part is composed by page-collection and page-model-edit. These pages are accessible via the following routes.
+Tha admin part is composed of page-collection and page-model-edit. These pages are accessible via the following routes.
 
 \begin{lstlisting}[language=html]
 <x-router>
@@ -439,7 +439,8 @@ Where: the parameter :collection is the name of the collection to inspect; the p
 \end{lstlisting}
 \end{itemize}
 
-Where: the value collection is picked from the url, via the parameter :collection; the value schema is the output of \texttt{<api-collection-schema>} and the input of \texttt{<api-collection-get>} and \texttt{<x-table>}; the value items is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-table>}; the value where is the output of \texttt{<api-collection-where>} and the input of \texttt{<api-collection-get>}; the value count is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-pager>}; the values perpage and page are the outputs of \texttt{<x-pager>} and the inputs of \texttt{<api-collection-get>}; every time the user (the admin) interacts with the pagination (\texttt{<x-pager>}) or the advanced search options (\texttt{<api-collection-where>}), \texttt{<api-collection-get>} regenerates the request to get the list of models using pagination and query parameters.
+Where: the value collection is picked from the url, via the parameter :collection; the value \texttt{schema} is the output of \texttt{<api-collection-schema>} and the input of \texttt{<api-collection-get>} and \texttt{<x-table>}; the value \texttt{items} is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-table>}; the value \texttt{where} is the output of \texttt{<api-collection-where>} and the input of \texttt{<api-collection-get>}; the value \texttt{count} is the output of \texttt{<api-collection-get>} and the input of \texttt{<x-pager>}; the values \texttt{perpage} and page are the outputs of \texttt{<x-pager>} and the inputs of \texttt{<api-collection-get>}.
+Every time the user (the admin) interacts with the pagination (\texttt{<x-pager>}) or the advanced search options (\texttt{<api-collection-where>}), \texttt{<api-collection-get>}, he regenerates the request to get the list of models using pagination and query parameters.
 
 
 \begin{itemize} \item \texttt{<page-model-edit>} Shows the forms to update a model.
@@ -498,5 +499,5 @@ Where: the value articles is the output of \texttt{<api-collection-get>} and the
 \end{lstlisting}
 \end{itemize}
 
-Once \texttt{<api-model-get>} has fetched the article (identified by id), title, author, date and content of the article will be shown. It has been shown how to use \texttt{x-project} toolkit to build a simple blog application. It can be extended, adding new features, by following the 4-steps document-driven process: defining new models, generating corresponding API, defininig new UI components, assembling the UI. The growth of the complexity of the application does not affect the complexity of the development. x-project source code is published on GitHub at http://github.com/x-project.
+Once \texttt{<api-model-get>} has fetched the article (identified by id), title, author, date and content of the article will be shown. It has been shown how to use \texttt{x-project} toolkit to build a simple blog application. It can be extended, by adding new features, by following the 4-steps document-driven process: defining new models, generating corresponding API, defininig new UI components, assembling the UI. The growth of the complexity of the application does not affect the complexity of the development. x-project source code is published on GitHub at http://github.com/x-project.
 
