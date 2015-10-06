@@ -1,7 +1,7 @@
 \section{User management}
 \label{sec:USR_user_management}
 
-The application list addressed to a community of users / customers have to implement the management mechanisms of the user.
+The application list addressed to a community of users / customers have to implement the management of user.
 
 The mechanisms for base user management are:
 \begin{itemize}
@@ -10,7 +10,7 @@ The mechanisms for base user management are:
 \item user logout
 \item user management
 \end{itemize}
-To these advanced management mechanism may be associated, such as:
+Further advanced management mechanisms may be associated, such as:
 \begin{itemize}
 \item email verification 
 \item email changing  
@@ -18,8 +18,8 @@ To these advanced management mechanism may be associated, such as:
 \item password changing  
 \end{itemize}
 
-The mechanisms of advanced management, involving the use of email, must necessarily be based on a email management service.
-Challenge of this project is to be able to encapsulate these mechanisms / behaviors in their elements, to allow it to integrate user management with the same ease with which it is possible to insert HTML elements on a page.
+The mechanisms of advanced management, involving the use of email, must necessarily be based on an email management service.
+Challenge of this project is to be able to encapsulate these mechanisms / behaviors in their elements, to allow it to integrate user management as easily as it is possible to insert HTML elements on a page.
 
 \subsection{User Management services}
 \label{subsec:USR_user_management_services}
@@ -28,7 +28,7 @@ This section talks about the various existing services for user management as: S
 
 Stormpath is a User Management API that reduces development time with instant-on, scalable user infrastructure. Stormpath's intuitive API and expert support make it easy for developers to authenticate, manage and secure users and roles in any application.
 
-Stormpath,it has a simple goal: give developers a complete user management system, so can focus on building great applications.\cite{usr_stormpath}
+Stormpath, has a simple goal: to provide developers with a complete user management system, so that they can focus on building great applications.\cite{usr_stormpath}
 
 \begin{itemize}
 \item Pre-built authentication \& authorization.
@@ -47,7 +47,7 @@ Stormpath,it has a simple goal: give developers a complete user management syste
 
 UserApp is a cloud-based user management API for web apps. The purpose is to relieve developers from having to program logic for login, sign up, calculate payments, turn on or off features, etc. And instead focus on their core product.
 
-UserApp provides with user management functionality that results in faster development, faster revenue, more users, and the ability to serve users better by engaging with them more efficiently.\cite{usr_userapp}
+UserApp provides user management functionality that results in faster development, faster revenue, more users, and the ability to serve users better by engaging with them more efficiently.\cite{usr_userapp}
 
 \begin{itemize}
 \item User authentication - Have the user authentication ready today. It is possible just a few lines of code away with one of SDKs.
@@ -58,7 +58,7 @@ UserApp provides with user management functionality that results in faster devel
 \subsubsection{Auth0}
 
 Auth0 is an enterprise-grade platform for modern identity.
-Auth0 give the tools that eliminate the friction of authentication for the applications and APIs - all accessible through the account dashboard.\cite{usr_auth0}
+Auth0 gives the tools that eliminate the friction of authentication for the applications and APIs - all accessible through the account dashboard.\cite{usr_auth0}
 
 \begin {figure}[h]
 \graphicspath{{images/chapter_USR/}}
@@ -66,7 +66,7 @@ Auth0 give the tools that eliminate the friction of authentication for the appli
 \caption{Auth0 Overview}
 \end {figure}
 
-It is possible connect any application, written on any language or stack to Auth0, and separately define how users of that application authenticate:
+It is possible to connect any application, written on any language or stack to Auth0, and separately to define how users of that application authenticate:
 
 \begin{itemize}
 \item Custom credentials: username/passwords.
@@ -86,7 +86,7 @@ LoopBack's built-in User model provides essential user management features such 
 \item Creating an access token.
 \item Password reset. 
 \end{itemize}
-In general can extend the User model to suit specific needs, so in most cases, it is don't need to create the own User model from scratch.
+In general it is possible extend the User model to suit specific needs, so in most cases, it is don't need to create the own User model from scratch.
 By default, a LoopBack application has a built-in User model defined by user.json
 In particular, it was implemented the connection with MailChimp service, named Mandrill.
 
