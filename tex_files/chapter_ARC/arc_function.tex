@@ -13,10 +13,10 @@ Because of principle 1,the  app must be capable of rendering any given view from
 
 \subsection{Local Routing}
 
-In this section has been presented the operation and the importence of local router to the manage of page request from the user.
-When using the standard pattern requiring a new page is done using GET: the browser itself sends the page request to the server, which responds by sending the page or performing the desired action.
-With the pattern SPA, the workflow is different, since, through the use of a router client side prevents the default behavior of the browser described above.
-The implementation of this pattern involves the following steps: recording listening to change the path; at each event of this type, the request is handled by a mapping path / handler, in which each path is associated with a function. In general, these functions have the task of fetching the template and the content needed to fill the latter.
+This section presents the operation and the importance of the local router to manage page requests made by the client.
+When the standard pattern is used HTTP GET request is triggered to require a new page: the browser itself sends the page request to the server, which responds by sending the page or performing the desired action.
+With the pattern SPA, the workflow is different: the use of a client side router prevents the browser's default behavior via the \texttt{preventDefault} method.
+The implementation of this pattern involves the following steps: listening to the path change via \texttt{onChange} function; for each event of this type, the request is handled by a mapping path or a handler, in which each path is associated with a function. In general, these functions have the task of retrieve the template and the content needed to fill it.
 
 \subsection{Server architecture}
 
